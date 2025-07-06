@@ -82,40 +82,6 @@
       padding: 20px;
       text-align: center;
     }
-    .people-helped {
-      background-color: #ffffff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .people-helped ul {
-      list-style: none;
-      padding: 0;
-    }
-    .people-helped li {
-      padding: 8px;
-    }
-    .relax-game {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .puzzle {
-      display: grid;
-      grid-template-columns: repeat(3, 60px);
-      gap: 5px;
-      justify-content: center;
-      margin: 20px auto;
-    }
-    .tile {
-      width: 60px;
-      height: 60px;
-      background: #aed581;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
     footer {
       text-align: center;
       padding: 20px;
@@ -123,6 +89,7 @@
       color: white;
     }
   </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
   <header class="help-bar">
@@ -136,8 +103,6 @@
       <option value="gu">ગુજરાતી</option>
     </select>
   </header>
-
-  <div id="conflict-ticker" aria-live="assertive"><div class="ticker-track"></div></div>
 
   <section class="hero">
     <h1 id="hero-title">Sahaay</h1>
@@ -159,20 +124,45 @@
         <h3 id="service-lost-title">Lost & Found</h3>
         <p id="service-lost-desc">Reunite families quickly through our matching system.</p>
       </div>
-   
     </div>
   </section>
 
   <section class="map-section">
     <h2 id="map-section-title">Live Aid Map – Find Help Across India</h2>
-    <div class="map-wrap">
-      <iframe title="Aid locations in India" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13217859.6!2d78.96!3d22.14!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397cf42a19a4df01%3A0x1f0ce80f3fe4c72f!2sIndia%20Red%20Cross%20Society!5e0!3m2!1sen!2sin!4v1716102400000" style="border:0;width:100%;height:100%;"></iframe>
-    </div>
+    <div class="map-wrap" id="map"></div>
   </section>
 
-  
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([22.14, 78.96], 5); // Centered on India
 
-  
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    // NGO data (replace this with dynamic data from your backend)
+    var ngos = [
+        { name: "CRY (Child Rights and You)", coords: [19.0760, 72.8777] },
+        { name: "Goonj", coords: [28.6139, 77.2090] },
+        { name: "Akshaya Patra Foundation", coords: [12.9716, 77.5946] },
+        { name: "Teach For India", coords: [19.0760, 72.8777] },
+        { name: "Smile Foundation", coords: [28.6139, 77.2090] },
+        { name: "Oxfam India", coords: [28.6139, 77.2090] },
+        { name: "HelpAge India", coords: [28.6139, 77.2090] },
+        { name: "SankalpTaru Foundation", coords: [26.9124, 75.7873] },
+        { name: "Pratham", coords: [19.0760, 72.8777] },
+        { name: "The V Foundation for Cancer Research", coords: [28.6139, 77.2090] },
+    ];
+
+    // Add markers to the map
+    ngos.forEach(function(ngo) {
+        L.marker(ngo.coords).addTo(map)
+            .bindPopup(ngo.name)
+            .openPopup();
+    });
+  </script>
 
   <div class="section music-box">
     <h3 id="relax-recharge-title">Relax & Recharge</h3>
@@ -189,17 +179,9 @@
     </video>
   </div>
 
-  
-  </div>
-
   <footer><p id="footer-text">&copy; 2025 Unity Reach. All rights reserved.</p></footer>
-  <script src="scripts.js"></script>
 </body>
 </html>
-
-
-
-
 
 
 
