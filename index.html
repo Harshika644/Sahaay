@@ -212,6 +212,26 @@ body.dark .hero-btn.outline {
   border-color: #66bb6a;
   color: #66bb6a;
 }
+/* DARK MODE STYLES FOR MODALS */
+body.dark .modal-content {
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .close {
+  color: #bbb;
+}
+
+body.dark .close:hover {
+  color: white;
+}
+body.dark #searchInput {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
 
 
   </style>
@@ -220,7 +240,8 @@ body.dark .hero-btn.outline {
 <body>
   <header class="help-bar">
     <span id="help-text">Need assistance? Contact our support team anytime.</span>
-    <a href="mailto:support@unityreach.in" class="btn-contact" id="contact-btn">Contact Support</a>
+    <button class="btn-contact" onclick="openModal('supportModal')">Contact Support</button>
+
     <select id="language-selector">
       <option value="en">English</option>
       <option value="hi">हिन्दी</option>
@@ -344,6 +365,67 @@ body.dark .hero-btn.outline {
   </div>
 </div>
 
+<!-- Support Modal with Full State Coverage -->
+<div id="supportModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('supportModal')">&times;</span>
+    <h2>📞 Emergency Helpline Numbers & NGOs (India)</h2>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by state or UT name"
+      onkeyup="filterSupportList()"
+      style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc;"
+    />
+
+    <p><strong>National Emergency Number:</strong> 112</p>
+    <p><strong>NDMA (National Disaster Management Authority):</strong> 1078</p>
+    <hr />
+    <h3>🌐 State-wise Helplines & Disaster NGOs</h3>
+    <ul id="supportList">
+      <li><strong>Andhra Pradesh:</strong> 0866-2410978 | <em>Red Cross AP</em></li>
+      <li><strong>Arunachal Pradesh:</strong> 1077 | <em>Relief India Trust</em></li>
+      <li><strong>Assam:</strong> 1070 | <em>Rapid Response Assam</em></li>
+      <li><strong>Bihar:</strong> 0612-2217305 | <em>Save the Children India</em></li>
+      <li><strong>Chhattisgarh:</strong> 0771-2223471 | <em>SEEDS Raipur</em></li>
+      <li><strong>Goa:</strong> 1077 | <em>Konkan Relief Network</em></li>
+      <li><strong>Gujarat:</strong> 1077 | <em>Relief Riders Gujarat</em></li>
+      <li><strong>Haryana:</strong> 1075 | <em>HelpAge India Gurugram</em></li>
+      <li><strong>Himachal Pradesh:</strong> 1077 | <em>CARE India Shimla</em></li>
+      <li><strong>Jharkhand:</strong> 0651-2400218 | <em>Smile Foundation Ranchi</em></li>
+      <li><strong>Karnataka:</strong> 1077 | <em>Goonj Bengaluru</em></li>
+      <li><strong>Kerala:</strong> 1077 | <em>SEEDS India Kochi</em></li>
+      <li><strong>Madhya Pradesh:</strong> 0755-2555378 | <em>ActionAid MP</em></li>
+      <li><strong>Maharashtra:</strong> 022-22027990 | <em>Goonj Mumbai</em></li>
+      <li><strong>Manipur:</strong> 0385-2450141 | <em>NERO Disaster Relief</em></li>
+      <li><strong>Meghalaya:</strong> 0364-2225289 | <em>Rapid Response Shillong</em></li>
+      <li><strong>Mizoram:</strong> 0389-2336033 | <em>Zoram Emergency Unit</em></li>
+      <li><strong>Nagaland:</strong> 0370-2291120 | <em>Naga Relief Collective</em></li>
+      <li><strong>Odisha:</strong> 0674-2395398 | <em>Oxfam India Bhubaneswar</em></li>
+      <li><strong>Punjab:</strong> 1075 | <em>Red Cross Punjab</em></li>
+      <li><strong>Rajasthan:</strong> 0141-2229111 | <em>SankalpTaru Foundation</em></li>
+      <li><strong>Sikkim:</strong> 03592-202575 | <em>Sikkim Relief Force</em></li>
+      <li><strong>Tamil Nadu:</strong> 1070 | <em>Red Cross TN</em></li>
+      <li><strong>Telangana:</strong> 1077 | <em>Relief India Hyderabad</em></li>
+      <li><strong>Tripura:</strong> 0381-2416045 | <em>CARE India Tripura</em></li>
+      <li><strong>Uttar Pradesh:</strong> 0522-2236496 | <em>HelpAge India Lucknow</em></li>
+      <li><strong>Uttarakhand:</strong> 1070 | <em>GiveIndia Relief Partners</em></li>
+      <li><strong>West Bengal:</strong> 033-22143526 | <em>ActionAid Kolkata</em></li>
+      <hr />
+      <h4>🇮🇳 Union Territories</h4>
+      <li><strong>Delhi:</strong> 1077 | <em>Smile Foundation</em></li>
+      <li><strong>Jammu & Kashmir:</strong> 0191-2546223 | <em>Kashmir Lifeline</em></li>
+      <li><strong>Ladakh:</strong> 01982-255567 | <em>Ladakh Relief Foundation</em></li>
+      <li><strong>Puducherry:</strong> 0413-2231201 | <em>SEEDS Puducherry</em></li>
+      <li><strong>Andaman & Nicobar:</strong> 03192-232102 | <em>Island Relief Trust</em></li>
+      <li><strong>Chandigarh:</strong> 0172-2749194 | <em>Punjab Red Cross Chandigarh</em></li>
+      <li><strong>Dadra and Nagar Haveli & Daman and Diu:</strong> 0260-2642106 | <em>Western Relief Collective</em></li>
+      <li><strong>Lakshadweep:</strong> 04896-262314 | <em>Island Relief Coordination</em></li>
+    </ul>
+    <p style="margin-top: 10px;">💡 You can also use our chatbot or NGO directory for real-time local support.</p>
+  </div>
+</div>
+
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
@@ -427,6 +509,17 @@ body.dark .hero-btn.outline {
       document.getElementById("themeSwitch").checked = true;
     }
   };
+function filterSupportList() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toLowerCase();
+  const ul = document.getElementById("supportList");
+  const li = ul.getElementsByTagName("li");
+
+  for (let i = 0; i < li.length; i++) {
+    const text = li[i].textContent || li[i].innerText;
+    li[i].style.display = text.toLowerCase().includes(filter) ? "" : "none";
+  }
+}
 
 
 </script>
