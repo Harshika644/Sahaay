@@ -88,6 +88,132 @@
       background: #2e7d32;
       color: white;
     }
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+.theme-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.theme-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: white;
+  bottom: 3px;
+  left: 4px;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .help-bar {
+  background-color: #1b5e20;
+  color: #e0e0e0;
+}
+
+body.dark .btn-contact {
+  background-color: #2e7d32;
+  color: white;
+}
+
+body.dark .hero {
+  background: #1c1c1c;
+}
+
+body.dark .card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+
+body.dark .music-box {
+  background-color: #2c2c2c;
+}
+
+body.dark footer {
+  background-color: #1b5e20;
+  color: #e0e0e0;
+}
+
+body.dark .hero-btn.primary {
+  background-color: #66bb6a;
+  color: black;
+}
+
+body.dark .hero-btn.outline {
+  border-color: #66bb6a;
+  color: #66bb6a;
+}
+
+
   </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
@@ -102,6 +228,11 @@
       <option value="kn">ಕನ್ನಡ</option>
       <option value="gu">ગુજરાતી</option>
     </select>
+    <label class="theme-toggle">
+  <input type="checkbox" id="themeSwitch" onchange="toggleTheme()" />
+  <span class="slider"></span>
+</label>
+
   </header>
 
   <section class="hero">
@@ -109,7 +240,7 @@
     <p id="hero-desc">Empowering Indian communities by connecting aid, resources & hope to those who need it most.</p>
     <a href="#get-started" class="hero-btn primary" id="join-btn">Join the Movement</a>
     <a href="https://ngosupplypredictor-e4fybd8dzf2xuurqswnytd.streamlit.app/" class="hero-btn outline" id="predict-btn">Predict Supply Shortages</a>
-  </section>
+  
 
   <section class="features" id="get-started">
     <h2 id="core-services-title">Our Core Services</h2>
@@ -150,6 +281,69 @@
     <h2 id="map-section-title">Live Aid Map – Find Help Across India</h2>
     <div class="map-wrap" id="map"></div>
   </section>
+  
+  <!-- Blog Section -->
+<section class="section" id="blog">
+  <h2 style="text-align: center; color: #2e7d32;">📰 Community Blog</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>How Local NGOs Saved Lives in Assam Floods</h3>
+      <p>A ground report on how community collaboration and tech helped thousands during the 2025 floods.</p>
+      <button class="hero-btn outline" onclick="openModal('modal1')">Read More</button>
+    </div>
+    <div class="card">
+      <h3>Using Sahaay’s Map Feature for Relief</h3>
+      <p>Learn how volunteers tracked shelters and planned effective aid delivery using our platform’s tools.</p>
+      <button class="hero-btn outline" onclick="openModal('modal2')">Read More</button>
+    </div>
+    <div class="card">
+      <h3>Voices of Hope: Stories from Survivors</h3>
+      <p>Real stories of resilience and unity shared by disaster-affected families helped through Sahaay.</p>
+      <button class="hero-btn outline" onclick="openModal('modal3')">Read More</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modals for blog content -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <h2>How Local NGOs Saved Lives in Assam Floods</h2>
+    <p>
+      In July 2025, massive floods struck Assam, affecting thousands. Local NGOs stepped in when access to remote
+      villages was blocked. With the help of Sahaay's real-time map, volunteers coordinated relief across affected districts,
+      dropping supplies by boat and drone. Stories of rescue, like the one in Barpeta where volunteers carried elders
+      across waist-high water, remind us of the importance of quick action and technology-driven support systems.
+    </p>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <h2>Using Sahaay’s Map Feature for Relief</h2>
+    <p>
+      Sahaay’s interactive Live Aid Map enabled disaster teams to view shelters, aid points, and flooded zones in real time.
+      During the Bihar monsoon season, volunteers could pinpoint isolated communities and send tailored support,
+      reducing redundancy and speeding up help delivery. This feature has become a critical tool for NGO coordination
+      and rapid-response planning across India.
+    </p>
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <h2>Voices of Hope: Stories from Survivors</h2>
+    <p>
+      “Thanks to Sahaay, my family got food and medicine within a day of the landslide,” says Reema, a mother of two
+      in Himachal. Many such testimonials show how the platform connected isolated families to NGOs nearby.
+      Real-time chatbot assistance helped people navigate help services, and the NGO directory allowed survivors to find
+      help even without knowing local organizations. Sahaay became their digital friend in a time of need.
+    </p>
+  </div>
+</div>
+
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
@@ -199,6 +393,44 @@
   </div>
 
   <footer><p id="footer-text">&copy; 2025 Unity Reach. All rights reserved.</p></footer>
+  <script>
+  function openModal(id) {
+    document.getElementById(id).style.display = "block";
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+  }
+
+  // Optional: Close modal if user clicks outside content
+  window.onclick = function(event) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  };
+
+  
+  // Toggle between light/dark mode
+  function toggleTheme() {
+    const isDark = document.body.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
+
+  // Load saved theme on page load
+  window.onload = function () {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      document.getElementById("themeSwitch").checked = true;
+    }
+  };
+
+
+</script>
+
 </body>
 </html>
 
