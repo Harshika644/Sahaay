@@ -4,237 +4,639 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="site-title">Sahaay – Empowering Indian Communities</title>
-  <style>
+    <style>
+    /* --- Base Styles --- */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; /* Smoother font */
       margin: 0;
       padding: 0;
       background: #f4fdf4;
       color: #333;
+      transition: background-color 0.4s ease, color 0.4s ease; /* Smooth dark mode transition */
     }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #388e3c; /* Darker green on hover */
+    }
+
+    /* --- Help Bar --- */
     .help-bar {
       background-color: #2e7d32;
       color: white;
-      padding: 10px;
+      padding: 14px 20px; /* More padding */
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Deeper shadow */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 0.5s ease-out; /* Animation */
     }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
     .btn-contact {
       background-color: #fff;
       color: #2e7d32;
-      padding: 6px 12px;
+      padding: 8px 16px; /* Larger padding */
       border-radius: 5px;
       text-decoration: none;
       margin-right: 10px;
+      font-weight: 600; /* Bolder text */
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Enhanced transition */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+
+    .btn-contact:hover {
+      background-color: #e0e0e0; /* Slightly darker white on hover */
+      transform: translateY(-2px); /* Lift effect */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* --- Hero Section --- */
     .hero {
       text-align: center;
-      padding: 40px 20px;
-      background: #c8e6c9;
+      padding: 80px 20px; /* More vertical padding */
+      background: linear-gradient(135deg, #388e3c, #66bb6a); /* Gradient background */
+      color: white; /* Text color for hero */
+      position: relative; /* For pseudo-elements */
+      overflow: hidden;
     }
+
+    .hero::before { /* Animated circle 1 */
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: moveCircle1 15s infinite alternate ease-in-out;
+      z-index: 1;
+    }
+
+    .hero::after { /* Animated circle 2 */
+      content: "";
+      position: absolute;
+      bottom: -70px;
+      right: -70px;
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      animation: moveCircle2 18s infinite alternate-reverse ease-in-out;
+      z-index: 1;
+    }
+
+    @keyframes moveCircle1 {
+      from { transform: translate(0, 0); }
+      to { transform: translate(100px, 150px); }
+    }
+
+    @keyframes moveCircle2 {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-120px, -100px); }
+    }
+
+    .hero h1 {
+      font-size: 3rem; /* Larger heading */
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-out; /* Fade in animation */
+      position: relative; z-index: 2; /* Bring text above circles */
+    }
+
+    .hero p {
+      font-size: 1.25rem; /* Larger paragraph */
+      max-width: 700px;
+      margin: 0 auto 30px;
+      animation: fadeIn 1.2s ease-out; /* Fade in animation */
+      position: relative; z-index: 2; /* Bring text above circles */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .hero-btn {
       margin: 10px;
-      padding: 10px 20px;
+      padding: 14px 32px; /* More padding */
       border: none;
-      border-radius: 8px;
+      border-radius: 40px; /* Pill shape */
       text-decoration: none;
-      font-size: 16px;
+      font-size: 1rem; /* Consistent font size */
+      font-weight: 700; /* Bolder text */
+      display: inline-block; /* For proper padding and margin */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Enhanced transition */
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      position: relative; z-index: 2; /* Bring buttons above circles */
     }
+
+    .hero-btn:hover {
+      transform: translateY(-5px); /* Lift effect */
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
     .primary {
       background-color: #388e3c;
       color: white;
     }
+
+    .primary:hover {
+      background-color: #2e7d32; /* Darker green on hover */
+    }
+
+    /* UPDATED .outline button styles */
     .outline {
-      background: transparent;
-      border: 2px solid #388e3c;
-      color: #388e3c;
+      background: #e0ffe0; /* Light green background */
+      border: 2px solid #388e3c; /* Green border */
+      color: #388e3c; /* Green text */
     }
+
+    .outline:hover {
+      background: #388e3c; /* Darker green background on hover */
+      color: white; /* White text on hover */
+    }
+
+    /* --- Feature & Section Base Styles --- */
     .features, .section {
-      padding: 40px 20px;
+      padding: 60px 20px; /* More vertical padding */
+      text-align: center; /* Center content */
     }
+
+    .features h2, .section h2 {
+      font-size: 2.5rem; /* Larger heading */
+      margin-bottom: 40px;
+      color: #2e7d32;
+      position: relative; /* For underline */
+    }
+
+    .features h2::after, .section h2::after { /* Underline effect */
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #2e7d32;
+      border-radius: 2px;
+    }
+
     .grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px; /* Keep gap */
       justify-content: center;
+      margin-top: 20px;
     }
+
+    /* IMPROVED CARD STYLING */
     .card {
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 300px;
+      padding: 30px; /* Increased padding for more breathing room */
+      border-radius: 16px; /* More rounded corners for a softer look */
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Softer, slightly larger shadow */
+      width: 320px; /* Slightly wider cards for better content display */
       text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added background-color to transition */
+      border: 1px solid rgba(46, 125, 50, 0.08); /* More subtle border */
+      overflow: hidden; /* Important for thumbnail border-radius to apply properly */
+      position: relative; /* For potential future elements or improved layering */
     }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02); /* More pronounced lift and slight zoom */
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* More prominent shadow on hover */
+      /* background-color: #f7fff7; /* Optional: Very subtle background change on hover */
+    }
+
     .thumb {
-      max-width: 100%;
-      height: 150px;
+      width: calc(100% + 60px); /* Extend beyond padding for a full-bleed image effect */
+      margin: -30px -30px 20px -30px; /* Adjust margin to pull image to edges, add space below */
+      height: 200px; /* Taller images for better visual impact */
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 16px 16px 0 0; /* Match card radius on top, sharp bottom for content flow */
+      display: block; /* Remove any inline-block spacing issues */
+      transition: transform 0.4s ease, filter 0.3s ease; /* Enhanced image transition */
     }
+
+    .card:hover .thumb {
+      transform: scale(1.05); /* More pronounced zoom in image on hover */
+      filter: brightness(1.05); /* Slightly brighten image on hover */
+    }
+
+    .card h3 {
+      font-size: 1.4rem; /* Slightly larger card title */
+      color: #2e7d32;
+      margin-top: 0; /* Adjusted due to new .thumb margin */
+      margin-bottom: 12px; /* A little more space below title */
+      line-height: 1.3; /* Better readability for longer titles */
+    }
+
+    .card p {
+      font-size: 1rem; /* Slightly larger paragraph text for readability */
+      color: #555;
+      margin-bottom: 20px; /* More space before the button */
+      line-height: 1.6; /* Improved line spacing for readability */
+    }
+
+    /* Adjust the .hero-btn for inside cards if they are using this class */
+    .card .hero-btn {
+        margin-top: auto; /* Push button to the bottom if card is flex-column */
+        display: inline-flex; /* Use flex for centering content within button if needed */
+        align-items: center;
+        justify-content: center;
+        padding: 12px 28px; /* Slightly adjusted padding for card buttons */
+        font-size: 0.95rem; /* Slightly smaller for card context */
+    }
+
+    /* --- Map Section --- */
+    .map-section { /* Added for consistency with your CSS */
+        padding: 60px 20px;
+        background-color: #e8f5e9; /* Light green background */
+    }
+
+    .map-section h2 {
+        font-size: 2.4rem;
+        color: #2e7d32;
+        margin-bottom: 35px;
+        position: relative;
+    }
+
+    .map-section h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: #2e7d32;
+        border-radius: 2px;
+    }
+
     .map-wrap {
+      max-width: 1200px; /* Constrain map width */
+      margin: 0 auto;
       width: 100%;
-      height: 400px;
+      height: 450px; /* Taller map */
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.18); /* Deeper shadow */
+      border: 1px solid rgba(46, 125, 50, 0.15); /* Subtle border */
     }
+    .map-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* --- Music Box --- */
     .music-box {
       background-color: #e8f5e9;
-      padding: 20px;
+      padding: 30px; /* More padding */
       text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Softer shadow */
+      margin-top: 40px; /* Space from previous section */
     }
+    .music-box h3 {
+        color: #2e7d32;
+        margin-bottom: 15px;
+    }
+    .music-box p {
+        font-size: 1rem;
+        color: #444;
+        margin-bottom: 25px;
+    }
+
+    /* --- Footer --- */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 40px 20px; /* More padding */
       background: #2e7d32;
       color: white;
+      font-size: 0.95rem; /* Slightly larger text */
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.15); /* Shadow for footer */
     }
+
+    /* --- Modal Styles --- */
     .modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.6);
-}
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px); /* Blurred background */
+      animation: fadeInModal 0.3s ease-out;
+    }
 
-.modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 30px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
-  position: relative;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-.close {
-  color: #aaa;
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .modal-content {
+      background-color: #fff;
+      margin: 8% auto; /* Adjust margin for better vertical centering */
+      padding: 40px; /* More padding */
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35); /* Deeper shadow */
+      animation: slideInModal 0.4s ease-out;
+    }
 
-.close:hover {
-  color: #000;
-}
-.theme-toggle {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-  margin-left: 10px;
-}
+    @keyframes slideInModal {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
 
-.theme-toggle input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 32px; /* Larger close button */
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  background-color: #ccc;
-  border-radius: 24px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.4s;
-}
+    .close:hover {
+      color: #000;
+      transform: rotate(90deg); /* Rotate on hover */
+    }
 
-.slider::before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  background-color: white;
-  bottom: 3px;
-  left: 4px;
-  transition: 0.4s;
-}
+    /* --- Theme Toggle --- */
+    .theme-toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px; /* Slightly taller */
+      margin-left: 15px;
+      vertical-align: middle; /* Align with text */
+    }
 
-input:checked + .slider {
-  background-color: #66bb6a;
-}
+    .theme-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
 
-input:checked + .slider::before {
-  transform: translateX(26px);
-}
-body.dark {
-  background-color: #121212;
-  color: #e0e0e0;
-}
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      background-color: #ccc;
+      border-radius: 28px; /* Match height for perfect capsule */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: 0.4s;
+    }
 
-body.dark .help-bar {
-  background-color: #1b5e20;
-  color: #e0e0e0;
-}
+    .slider::before {
+      position: absolute;
+      content: "";
+      height: 22px; /* Slightly larger circle */
+      width: 22px;
+      border-radius: 50%;
+      background-color: white;
+      bottom: 3px; /* Adjust positioning */
+      left: 3px; /* Adjust positioning */
+      transition: 0.4s;
+    }
 
-body.dark .btn-contact {
-  background-color: #2e7d32;
-  color: white;
-}
+    input:checked + .slider {
+      background-color: #66bb6a;
+    }
 
-body.dark .hero {
-  background: #1c1c1c;
-}
+    input:checked + .slider::before {
+      transform: translateX(22px); /* Adjust for larger circle */
+    }
 
-body.dark .card {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
-}
+    /* --- Dark Mode Styles --- */
+    body.dark {
+      background-color: #1a1a1a; /* Darker background */
+      color: #e0e0e0;
+    }
 
-body.dark .music-box {
-  background-color: #2c2c2c;
-}
+    body.dark .help-bar {
+      background-color: #1b5e20;
+      color: #e0e0e0;
+      box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+    }
 
-body.dark footer {
-  background-color: #1b5e20;
-  color: #e0e0e0;
-}
+    body.dark .btn-contact {
+      background-color: #4caf50; /* Brighter green in dark mode */
+      color: black;
+    }
+    body.dark .btn-contact:hover {
+        background-color: #66bb6a;
+    }
 
-body.dark .hero-btn.primary {
-  background-color: #66bb6a;
-  color: black;
-}
+    body.dark .hero {
+      background: linear-gradient(135deg, #1b5e20, #388e3c); /* Darker gradient */
+    }
+    body.dark .hero::before, body.dark .hero::after {
+        background: rgba(255, 255, 255, 0.05); /* Lighter circles in dark mode */
+    }
 
-body.dark .hero-btn.outline {
-  border-color: #66bb6a;
-  color: #66bb6a;
-}
-/* DARK MODE STYLES FOR MODALS */
-body.dark .modal-content {
-  background-color: #1f1f1f;
-  color: #e0e0e0;
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-}
+    /* IMPROVED DARK MODE STYLES FOR CARDS */
+    body.dark .card {
+      background-color: #2b2b2b;
+      color: #e0e0e0;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.05); /* Softer dark mode shadow */
+      border: 1px solid rgba(255,255,255,0.05); /* More subtle dark mode border */
+    }
+    body.dark .card:hover {
+        transform: translateY(-10px) scale(1.02); /* Consistent lift and zoom */
+        box-shadow: 0 10px 25px rgba(255,255,255,0.1); /* More prominent shadow on hover */
+        /* background-color: #333333; /* Optional: Subtle background change in dark mode */
+    }
+    body.dark .card h3 {
+        color: #81c784; /* Brighter green heading in dark mode for more pop */
+    }
+    body.dark .card p {
+        color: #ccc; /* Lighter text for better contrast */
+    }
+    body.dark .card .hero-btn.outline {
+        background-color: #383838; /* Darker background for outline button in dark card */
+        border-color: #81c784; /* Brighter green border */
+        color: #81c784; /* Brighter green text */
+    }
+    body.dark .card .hero-btn.outline:hover {
+        background-color: #81c784; /* Brighter green background on hover */
+        color: black;
+    }
 
-body.dark .close {
-  color: #bbb;
-}
 
-body.dark .close:hover {
-  color: white;
-}
-body.dark #searchInput {
-  background-color: #2b2b2b;
-  color: #e0e0e0;
-  border: 1px solid #444;
-}
+    body.dark .music-box {
+      background-color: #2b2b2b;
+      box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+    }
+    body.dark .music-box h3 {
+        color: #66bb6a;
+    }
+    body.dark .music-box p {
+        color: #bbb;
+    }
 
+    body.dark footer {
+      background-color: #1b5e20;
+      color: #e0e0e0;
+    }
 
+    body.dark .hero-btn.primary {
+      background-color: #66bb6a;
+      color: black;
+    }
 
-  </style>
+    /* UPDATED DARK MODE .outline button styles */
+    body.dark .hero-btn.outline {
+      background-color: #333; /* Darker background for dark mode */
+      border-color: #66bb6a; /* Keep brighter green border */
+      color: #66bb6a; /* Keep brighter green text */
+    }
+    body.dark .hero-btn.outline:hover {
+        background-color: #66bb6a;
+        color: black;
+    }
+
+    /* DARK MODE STYLES FOR MODALS */
+    body.dark .modal-content {
+      background-color: #2b2b2b;
+      color: #e0e0e0;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark .close {
+      color: #bbb;
+    }
+
+    body.dark .close:hover {
+      color: white;
+    }
+    body.dark #searchInput {
+      background-color: #2b2b2b;
+      color: #e0e0e0;
+      border: 1px solid #444;
+    }
+
+    body.dark .features h2, body.dark .section h2, body.dark .map-section h2 {
+        color: #66bb6a; /* Brighter heading in dark mode */
+    }
+    body.dark .features h2::after, body.dark .section h2::after, body.dark .map-section h2::after {
+        background-color: #66bb6a; /* Brighter underline in dark mode */
+    }
+    body.dark .map-section {
+        background-color: #222; /* Darker background for map section */
+    }
+    body.dark .map-wrap {
+        box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 768px) {
+        .help-bar {
+            padding: 10px 15px;
+        }
+        .hero {
+            padding: 60px 15px;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+        .hero p {
+            font-size: 1rem;
+        }
+        .hero-btn {
+            padding: 12px 25px;
+        }
+        .features, .section {
+            padding: 40px 15px;
+        }
+        .features h2, .section h2, .map-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .grid {
+            gap: 20px;
+        }
+        /* UPDATED RESPONSIVE ADJUSTMENTS FOR CARDS */
+        .card {
+            width: 100%; /* Make cards full width on smaller screens */
+            max-width: 380px; /* Keep a max-width for very narrow screens */
+            padding: 25px; /* Slightly less padding */
+        }
+        .thumb {
+            width: calc(100% + 50px); /* Adjust for new padding */
+            margin: -25px -25px 15px -25px; /* Adjust for new padding */
+            height: 180px;
+            border-radius: 16px 16px 0 0;
+        }
+        .card h3 {
+            font-size: 1.3rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .map-wrap {
+            height: 300px; /* Shorter map on small screens */
+        }
+        .modal-content {
+            width: 90%;
+            margin: 5% auto;
+            padding: 25px;
+        }
+        .close {
+            font-size: 28px;
+        }
+        .hero::before, .hero::after { /* Hide animated circles on small screens */
+            display: none;
+        }
+    }
+
+    /* Styling for the language selector */
+    #language-selector {
+        padding: 8px 12px;
+        margin-left: 15px;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        background-color: #004d40; /* Match button style */
+        color: white;
+        font-size: 0.9rem;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark #language-selector {
+        background-color: #4caf50; /* Brighter green for selector in dark mode */
+        border-color: #66bb6a;
+        color: black;
+    }
+</style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
@@ -250,9 +652,9 @@ body.dark #searchInput {
       <option value="gu">ગુજરાતી</option>
     </select>
     <label class="theme-toggle">
-  <input type="checkbox" id="themeSwitch" onchange="toggleTheme()" />
-  <span class="slider"></span>
-</label>
+      <input type="checkbox" id="themeSwitch" onchange="toggleTheme()" />
+      <span class="slider"></span>
+    </label>
 
   </header>
 
@@ -261,7 +663,7 @@ body.dark #searchInput {
     <p id="hero-desc">Empowering Indian communities by connecting aid, resources & hope to those who need it most.</p>
     <a href="#get-started" class="hero-btn primary" id="join-btn">Join the Movement</a>
     <a href="https://ngosupplypredictor-e4fybd8dzf2xuurqswnytd.streamlit.app/" class="hero-btn outline" id="predict-btn">Predict Supply Shortages</a>
-  
+  </section>
 
   <section class="features" id="get-started">
     <h2 id="core-services-title">Our Core Services</h2>
@@ -280,57 +682,55 @@ body.dark #searchInput {
        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Chatbot Icon" class="thumb" />
        <h3 id="service-chatbot-title">Relief Support Chatbot</h3>
        <p id="service-chatbot-desc">Get instant help, guidance, and connect to resources during natural disasters.</p>
-       <a href="https://sweta123761-calamity-chatbot-app-rvbw6v.streamlit.app/" class="hero-btn primary" style="margin-top: 10px;">Try Chatbot</a>
+       <a href="https://sweta123761-calamity-chatbot-app-rvbw6v.streamlit.app/" class="hero-btn primary" id="chatbot-btn" style="margin-top: 10px;">Try Chatbot</a>
       </div>
-      <div class="card">
-  <img src="Screenshot 2025-07-08 122105.png" alt="NGO Icon" class="thumb" />
-  <h3 id="service-ngo-title">🆘 NGO Directory - Sahaay</h3>
-  <p id="service-ngo-desc">Find and connect with NGOs across India by filtering location and services.</p>
-  <a href="https://sweta123761-ngo-directory-app-sqttod.streamlit.app/" class="hero-btn primary" style="margin-top: 10px;">Browse NGOs</a>
-   </div>
-      <div class="card">
-  <img src="Screenshot 2025-07-08 122105.png" alt="Flood Icon" class="thumb" />
-  <h3 id="service-flood-title">🌊 Flood Risk Predictor</h3>
-  <p id="service-flood-desc">Predict flood risk using local weather conditions to stay alert and prepare early.</p>
-  <a href="https://sweta123761-flood-predictor-app-1v0jpi.streamlit.app/" class="hero-btn primary" style="margin-top: 10px;">Try Flood Predictor</a>
+       <div class="card">
+   <img src="Screenshot 2025-07-08 122105.png" alt="NGO Icon" class="thumb" />
+   <h3 id="service-ngo-directory-title">🆘 NGO Directory - Sahaay</h3>
+   <p id="service-ngo-directory-desc">Find and connect with NGOs across India by filtering location and services.</p>
+   <a href="https://sweta123761-ngo-directory-app-sqttod.streamlit.app/" class="hero-btn primary" id="browse-ngos-btn" style="margin-top: 10px;">Browse NGOs</a>
+      </div>
+       <div class="card">
+   <img src="Screenshot 2025-07-08 122105.png" alt="Flood Icon" class="thumb" />
+   <h3 id="service-flood-title">🌊 Flood Risk Predictor</h3>
+   <p id="service-flood-desc">Predict flood risk using local weather conditions to stay alert and prepare early.</p>
+   <a href="https://sweta123761-flood-predictor-app-1v0jpi.streamlit.app/" class="hero-btn primary" id="try-flood-predictor-btn" style="margin-top: 10px;">Try Flood Predictor</a>
 </div>
 
     </div>
   </section>
 
   <section class="map-section">
-    <h2 id="map-section-title">Live Aid Map – Find Help Across India</h2>
+    <h2 id="map-section-title">Ngos Across India – Find Help Across India</h2>
     <div class="map-wrap" id="map"></div>
   </section>
-  
-  <!-- Blog Section -->
+
 <section class="section" id="blog">
-  <h2 style="text-align: center; color: #2e7d32;">📰 Community Blog</h2>
+  <h2 id="community-blog-title" style="text-align: center; color: #2e7d32;">📰 Community Blog</h2>
   <div class="grid">
     <div class="card">
-      <h3>How Local NGOs Saved Lives in Assam Floods</h3>
-      <p>A ground report on how community collaboration and tech helped thousands during the 2025 floods.</p>
-      <button class="hero-btn outline" onclick="openModal('modal1')">Read More</button>
+      <h3 id="blog-assam-title">How Local NGOs Saved Lives in Assam Floods</h3>
+      <p id="blog-assam-desc">A ground report on how community collaboration and tech helped thousands during the 2025 floods.</p>
+      <button class="hero-btn outline" id="blog-assam-btn" onclick="openModal('modal1')">Read More</button>
     </div>
     <div class="card">
-      <h3>Using Sahaay’s Map Feature for Relief</h3>
-      <p>Learn how volunteers tracked shelters and planned effective aid delivery using our platform’s tools.</p>
-      <button class="hero-btn outline" onclick="openModal('modal2')">Read More</button>
+      <h3 id="blog-map-title">Using Sahaay’s Map Feature for Relief</h3>
+      <p id="blog-map-desc">Learn how volunteers tracked shelters and planned effective aid delivery using our platform’s tools.</p>
+      <button class="hero-btn outline" id="blog-map-btn" onclick="openModal('modal2')">Read More</button>
     </div>
     <div class="card">
-      <h3>Voices of Hope: Stories from Survivors</h3>
-      <p>Real stories of resilience and unity shared by disaster-affected families helped through Sahaay.</p>
-      <button class="hero-btn outline" onclick="openModal('modal3')">Read More</button>
+      <h3 id="blog-stories-title">Voices of Hope: Stories from Survivors</h3>
+      <p id="blog-stories-desc">Real stories of resilience and unity shared by disaster-affected families helped through Sahaay.</p>
+      <button class="hero-btn outline" id="blog-stories-btn" onclick="openModal('modal3')">Read More</button>
     </div>
   </div>
 </section>
 
-<!-- Modals for blog content -->
 <div id="modal1" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">&times;</span>
-    <h2>How Local NGOs Saved Lives in Assam Floods</h2>
-    <p>
+    <h2 id="modal1-title">How Local NGOs Saved Lives in Assam Floods</h2>
+    <p id="modal1-content">
       In July 2025, massive floods struck Assam, affecting thousands. Local NGOs stepped in when access to remote
       villages was blocked. With the help of Sahaay's real-time map, volunteers coordinated relief across affected districts,
       dropping supplies by boat and drone. Stories of rescue, like the one in Barpeta where volunteers carried elders
@@ -342,8 +742,8 @@ body.dark #searchInput {
 <div id="modal2" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal2')">&times;</span>
-    <h2>Using Sahaay’s Map Feature for Relief</h2>
-    <p>
+    <h2 id="modal2-title">Using Sahaay’s Map Feature for Relief</h2>
+    <p id="modal2-content">
       Sahaay’s interactive Live Aid Map enabled disaster teams to view shelters, aid points, and flooded zones in real time.
       During the Bihar monsoon season, volunteers could pinpoint isolated communities and send tailored support,
       reducing redundancy and speeding up help delivery. This feature has become a critical tool for NGO coordination
@@ -355,8 +755,8 @@ body.dark #searchInput {
 <div id="modal3" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal3')">&times;</span>
-    <h2>Voices of Hope: Stories from Survivors</h2>
-    <p>
+    <h2 id="modal3-title">Voices of Hope: Stories from Survivors</h2>
+    <p id="modal3-content">
       “Thanks to Sahaay, my family got food and medicine within a day of the landslide,” says Reema, a mother of two
       in Himachal. Many such testimonials show how the platform connected isolated families to NGOs nearby.
       Real-time chatbot assistance helped people navigate help services, and the NGO directory allowed survivors to find
@@ -365,11 +765,10 @@ body.dark #searchInput {
   </div>
 </div>
 
-<!-- Support Modal with Full State Coverage -->
 <div id="supportModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('supportModal')">&times;</span>
-    <h2>📞 Emergency Helpline Numbers & NGOs (India)</h2>
+    <h2 id="support-modal-title">📞 Emergency Helpline Numbers & NGOs (India)</h2>
     <input
       type="text"
       id="searchInput"
@@ -378,66 +777,66 @@ body.dark #searchInput {
       style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc;"
     />
 
-    <p><strong>National Emergency Number:</strong> 112</p>
-    <p><strong>NDMA (National Disaster Management Authority):</strong> 1078</p>
+    <p><strong id="national-emergency-label">National Emergency Number:</strong> <span id="national-emergency-number">112</span></p>
+    <p><strong id="ndma-label">NDMA (National Disaster Management Authority):</strong> <span id="ndma-number">1078</span></p>
     <hr />
-    <h3>🌐 State-wise Helplines & Disaster NGOs</h3>
+    <h3 id="state-wise-helplines-title">🌐 State-wise Helplines & Disaster NGOs</h3>
     <ul id="supportList">
-      <li><strong>Andhra Pradesh:</strong> 0866-2410978 | <em>Red Cross AP</em></li>
-      <li><strong>Arunachal Pradesh:</strong> 1077 | <em>Relief India Trust</em></li>
-      <li><strong>Assam:</strong> 1070 | <em>Rapid Response Assam</em></li>
-      <li><strong>Bihar:</strong> 0612-2217305 | <em>Save the Children India</em></li>
-      <li><strong>Chhattisgarh:</strong> 0771-2223471 | <em>SEEDS Raipur</em></li>
-      <li><strong>Goa:</strong> 1077 | <em>Konkan Relief Network</em></li>
-      <li><strong>Gujarat:</strong> 1077 | <em>Relief Riders Gujarat</em></li>
-      <li><strong>Haryana:</strong> 1075 | <em>HelpAge India Gurugram</em></li>
-      <li><strong>Himachal Pradesh:</strong> 1077 | <em>CARE India Shimla</em></li>
-      <li><strong>Jharkhand:</strong> 0651-2400218 | <em>Smile Foundation Ranchi</em></li>
-      <li><strong>Karnataka:</strong> 1077 | <em>Goonj Bengaluru</em></li>
-      <li><strong>Kerala:</strong> 1077 | <em>SEEDS India Kochi</em></li>
-      <li><strong>Madhya Pradesh:</strong> 0755-2555378 | <em>ActionAid MP</em></li>
-      <li><strong>Maharashtra:</strong> 022-22027990 | <em>Goonj Mumbai</em></li>
-      <li><strong>Manipur:</strong> 0385-2450141 | <em>NERO Disaster Relief</em></li>
-      <li><strong>Meghalaya:</strong> 0364-2225289 | <em>Rapid Response Shillong</em></li>
-      <li><strong>Mizoram:</strong> 0389-2336033 | <em>Zoram Emergency Unit</em></li>
-      <li><strong>Nagaland:</strong> 0370-2291120 | <em>Naga Relief Collective</em></li>
-      <li><strong>Odisha:</strong> 0674-2395398 | <em>Oxfam India Bhubaneswar</em></li>
-      <li><strong>Punjab:</strong> 1075 | <em>Red Cross Punjab</em></li>
-      <li><strong>Rajasthan:</strong> 0141-2229111 | <em>SankalpTaru Foundation</em></li>
-      <li><strong>Sikkim:</strong> 03592-202575 | <em>Sikkim Relief Force</em></li>
-      <li><strong>Tamil Nadu:</strong> 1070 | <em>Red Cross TN</em></li>
-      <li><strong>Telangana:</strong> 1077 | <em>Relief India Hyderabad</em></li>
-      <li><strong>Tripura:</strong> 0381-2416045 | <em>CARE India Tripura</em></li>
-      <li><strong>Uttar Pradesh:</strong> 0522-2236496 | <em>HelpAge India Lucknow</em></li>
-      <li><strong>Uttarakhand:</strong> 1070 | <em>GiveIndia Relief Partners</em></li>
-      <li><strong>West Bengal:</strong> 033-22143526 | <em>ActionAid Kolkata</em></li>
+      <li><strong id="ap-state">Andhra Pradesh:</strong> <span id="ap-helpline">0866-2410978</span> | <em id="ap-ngo">Red Cross AP</em></li>
+      <li><strong id="ar-state">Arunachal Pradesh:</strong> <span id="ar-helpline">1077</span> | <em id="ar-ngo">Relief India Trust</em></li>
+      <li><strong id="as-state">Assam:</strong> <span id="as-helpline">1070</span> | <em id="as-ngo">Rapid Response Assam</em></li>
+      <li><strong id="br-state">Bihar:</strong> <span id="br-helpline">0612-2217305</span> | <em id="br-ngo">Save the Children India</em></li>
+      <li><strong id="ch-state">Chhattisgarh:</strong> <span id="ch-helpline">0771-2223471</span> | <em id="ch-ngo">SEEDS Raipur</em></li>
+      <li><strong id="ga-state">Goa:</strong> <span id="ga-helpline">1077</span> | <em id="ga-ngo">Konkan Relief Network</em></li>
+      <li><strong id="gj-state">Gujarat:</strong> <span id="gj-helpline">1077</span> | <em id="gj-ngo">Relief Riders Gujarat</em></li>
+      <li><strong id="hr-state">Haryana:</strong> <span id="hr-helpline">1075</span> | <em id="hr-ngo">HelpAge India Gurugram</em></li>
+      <li><strong id="hp-state">Himachal Pradesh:</strong> <span id="hp-helpline">1077</span> | <em id="hp-ngo">CARE India Shimla</em></li>
+      <li><strong id="jh-state">Jharkhand:</strong> <span id="jh-helpline">0651-2400218</span> | <em id="jh-ngo">Smile Foundation Ranchi</em></li>
+      <li><strong id="ka-state">Karnataka:</strong> <span id="ka-helpline">1077</span> | <em id="ka-ngo">Goonj Bengaluru</em></li>
+      <li><strong id="kl-state">Kerala:</strong> <span id="kl-helpline">1077</span> | <em id="kl-ngo">SEEDS India Kochi</em></li>
+      <li><strong id="mp-state">Madhya Pradesh:</strong> <span id="mp-helpline">0755-2555378</span> | <em id="mp-ngo">ActionAid MP</em></li>
+      <li><strong id="mh-state">Maharashtra:</strong> <span id="mh-helpline">022-22027990</span> | <em id="mh-ngo">Goonj Mumbai</em></li>
+      <li><strong id="mn-state">Manipur:</strong> <span id="mn-helpline">0385-2450141</span> | <em id="mn-ngo">NERO Disaster Relief</em></li>
+      <li><strong id="ml-state">Meghalaya:</strong> <span id="ml-helpline">0364-2225289</span> | <em id="ml-ngo">Rapid Response Shillong</em></li>
+      <li><strong id="mz-state">Mizoram:</strong> <span id="mz-helpline">0389-2336033</span> | <em id="mz-ngo">Zoram Emergency Unit</em></li>
+      <li><strong id="nl-state">Nagaland:</strong> <span id="nl-helpline">0370-2291120</span> | <em id="nl-ngo">Naga Relief Collective</em></li>
+      <li><strong id="od-state">Odisha:</strong> <span id="od-helpline">0674-2395398</span> | <em id="od-ngo">Oxfam India Bhubaneswar</em></li>
+      <li><strong id="pb-state">Punjab:</strong> <span id="pb-helpline">1075</span> | <em id="pb-ngo">Red Cross Punjab</em></li>
+      <li><strong id="rj-state">Rajasthan:</strong> <span id="rj-helpline">0141-2229111</span> | <em id="rj-ngo">SankalpTaru Foundation</em></li>
+      <li><strong id="sk-state">Sikkim:</strong> <span id="sk-helpline">03592-202575</span> | <em id="sk-ngo">Sikkim Relief Force</em></li>
+      <li><strong id="tn-state">Tamil Nadu:</strong> <span id="tn-helpline">1070</span> | <em id="tn-ngo">Red Cross TN</em></li>
+      <li><strong id="ts-state">Telangana:</strong> <span id="ts-helpline">1077</span> | <em id="ts-ngo">Relief India Hyderabad</em></li>
+      <li><strong id="tr-state">Tripura:</strong> <span id="tr-helpline">0381-2416045</span> | <em id="tr-ngo">CARE India Tripura</em></li>
+      <li><strong id="up-state">Uttar Pradesh:</strong> <span id="up-helpline">0522-2236496</span> | <em id="up-ngo">HelpAge India Lucknow</em></li>
+      <li><strong id="ut-state">Uttarakhand:</strong> <span id="ut-helpline">1070</span> | <em id="ut-ngo">GiveIndia Relief Partners</em></li>
+      <li><strong id="wb-state">West Bengal:</strong> <span id="wb-helpline">033-22143526</span> | <em id="wb-ngo">ActionAid Kolkata</em></li>
       <hr />
-      <h4>🇮🇳 Union Territories</h4>
-      <li><strong>Delhi:</strong> 1077 | <em>Smile Foundation</em></li>
-      <li><strong>Jammu & Kashmir:</strong> 0191-2546223 | <em>Kashmir Lifeline</em></li>
-      <li><strong>Ladakh:</strong> 01982-255567 | <em>Ladakh Relief Foundation</em></li>
-      <li><strong>Puducherry:</strong> 0413-2231201 | <em>SEEDS Puducherry</em></li>
-      <li><strong>Andaman & Nicobar:</strong> 03192-232102 | <em>Island Relief Trust</em></li>
-      <li><strong>Chandigarh:</strong> 0172-2749194 | <em>Punjab Red Cross Chandigarh</em></li>
-      <li><strong>Dadra and Nagar Haveli & Daman and Diu:</strong> 0260-2642106 | <em>Western Relief Collective</em></li>
-      <li><strong>Lakshadweep:</strong> 04896-262314 | <em>Island Relief Coordination</em></li>
+      <h4 id="ut-title">🇮🇳 Union Territories</h4>
+      <li><strong id="dl-state">Delhi:</strong> <span id="dl-helpline">1077</span> | <em id="dl-ngo">Smile Foundation</em></li>
+      <li><strong id="jk-state">Jammu & Kashmir:</strong> <span id="jk-helpline">0191-2546223</span> | <em id="jk-ngo">Kashmir Lifeline</em></li>
+      <li><strong id="ld-state">Ladakh:</strong> <span id="ld-helpline">01982-255567</span> | <em id="ld-ngo">Ladakh Relief Foundation</em></li>
+      <li><strong id="py-state">Puducherry:</strong> <span id="py-helpline">0413-2231201</span> | <em id="py-ngo">SEEDS Puducherry</em></li>
+      <li><strong id="an-state">Andaman & Nicobar:</strong> <span id="an-helpline">03192-232102</span> | <em id="an-ngo">Island Relief Trust</em></li>
+      <li><strong id="chd-state">Chandigarh:</strong> <span id="chd-helpline">0172-2749194</span> | <em id="chd-ngo">Punjab Red Cross Chandigarh</em></li>
+      <li><strong id="dnhdd-state">Dadra and Nagar Haveli & Daman and Diu:</strong> <span id="dnhdd-helpline">0260-2642106</span> | <em id="dnhdd-ngo">Western Relief Collective</em></li>
+      <li><strong id="lk-state">Lakshadweep:</strong> <span id="lk-helpline">04896-262314</span> | <em id="lk-ngo">Island Relief Coordination</em></li>
     </ul>
-    <p style="margin-top: 10px;">💡 You can also use our chatbot or NGO directory for real-time local support.</p>
+    <p id="support-modal-tip" style="margin-top: 10px;">💡 You can also use our chatbot or NGO directory for real-time local support.</p>
   </div>
 </div>
 
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    // Initialize the map
+    // Initialize the map (KEEP THIS)
     var map = L.map('map').setView([22.14, 78.96], 5); // Centered on India
 
-    // Add OpenStreetMap tiles
+    // Add OpenStreetMap tiles (KEEP THIS)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
     }).addTo(map);
 
-    // NGO data (replace this with dynamic data from your backend)
+    // NGO data (KEEP THIS)
     var ngos = [
         { name: "CRY (Child Rights and You)", coords: [19.0760, 72.8777] },
         { name: "Goonj", coords: [28.6139, 77.2090] },
@@ -451,82 +850,603 @@ body.dark #searchInput {
         { name: "The V Foundation for Cancer Research", coords: [28.6139, 77.2090] },
     ];
 
-    // Add markers to the map
+    // Add markers to the map (KEEP THIS)
     ngos.forEach(function(ngo) {
         L.marker(ngo.coords).addTo(map)
             .bindPopup(ngo.name)
             .openPopup();
     });
-  </script>
 
-  <div class="section music-box">
-    <h3 id="relax-recharge-title">Relax & Recharge</h3>
-    <h2 id="music-title">Peaceful Relief Music</h2>
-    <p id="music-desc">Listen to calming sounds and ease your mind.</p>
-    <video width="300" controls>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <br /><br />
-    <video width="300" controls>
-      <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <footer><p id="footer-text">&copy; 2025 Unity Reach. All rights reserved.</p></footer>
-  <script>
-  function openModal(id) {
-    document.getElementById(id).style.display = "block";
-  }
-
-  function closeModal(id) {
-    document.getElementById(id).style.display = "none";
-  }
-
-  // Optional: Close modal if user clicks outside content
-  window.onclick = function(event) {
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-      if (event.target === modal) {
-        modal.style.display = "none";
+    // --- YOUR ORIGINAL MODAL FUNCTIONS (KEEP THESE) ---
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+      // When opening the support modal, ensure placeholders are set for current lang
+      if (id === 'supportModal') {
+          updateModalPlaceholders(document.getElementById("language-selector").value);
       }
-    });
-  };
-
-  
-  // Toggle between light/dark mode
-  function toggleTheme() {
-    const isDark = document.body.classList.toggle("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  }
-
-  // Load saved theme on page load
-  window.onload = function () {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-      document.getElementById("themeSwitch").checked = true;
     }
-  };
-function filterSupportList() {
-  const input = document.getElementById("searchInput");
-  const filter = input.value.toLowerCase();
-  const ul = document.getElementById("supportList");
-  const li = ul.getElementsByTagName("li");
 
-  for (let i = 0; i < li.length; i++) {
-    const text = li[i].textContent || li[i].innerText;
-    li[i].style.display = text.toLowerCase().includes(filter) ? "" : "none";
-  }
-}
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
 
+    // Optional: Close modal if user clicks outside content (KEEP THIS)
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    };
 
-</script>
+    // --- YOUR ORIGINAL THEME TOGGLE (MODIFIED SLIGHTLY FOR LANGUAGE INTEGRATION) ---
+    const themeSwitch = document.getElementById("themeSwitch");
+    const siteTitle = document.getElementById("site-title"); // Get the title element
 
+    function toggleTheme() {
+        const isDark = document.body.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        updateSiteTitleAndContent(document.getElementById("language-selector").value); // Update title and content on theme change
+    }
+
+    // Load saved theme on page load (MODIFIED TO CALL LANGUAGE UPDATE)
+    window.onload = function () {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark");
+            themeSwitch.checked = true;
+        } else {
+            themeSwitch.checked = false; // Ensure it's unchecked if not dark
+        }
+
+        // Apply saved language on load
+        const savedLanguage = localStorage.getItem("selectedLanguage") || "en"; // Default to English
+        document.getElementById("language-selector").value = savedLanguage; // Set dropdown to saved language
+        applyTranslations(savedLanguage); // Apply the translations
+    };
+
+    // --- YOUR ORIGINAL FILTER SUPPORT LIST FUNCTION (KEEP THIS) ---
+    function filterSupportList() {
+      const input = document.getElementById("searchInput");
+      const filter = input.value.toLowerCase();
+      const ul = document.getElementById("supportList");
+      const li = ul.getElementsByTagName("li");
+
+      for (let i = 0; i < li.length; i++) {
+        const text = li[i].textContent || li[i].innerText;
+        li[i].style.display = text.toLowerCase().includes(filter) ? "" : "none";
+      }
+    }
+
+    // --- YOUR PROVIDED TRANSLATIONS OBJECT ---
+    const translations = {
+        en: {
+            "site-title": "Sahaay – Empowering Indian Communities",
+            "help-text": "Need assistance? Contact our support team anytime.",
+            "contact-btn": "Contact Support",
+            "hero-title": "Sahaay",
+            "hero-desc": "Empowering Indian communities by connecting aid, resources & hope to those who need it most.",
+            "join-btn": "Join the Movement",
+            "predict-btn": "Predict Supply Shortages",
+            "core-services-title": "Our Core Services",
+            "service-map-title": "Live Aid Map",
+            "service-map-desc": "Locate real-time aid points & shelters across India.",
+            "service-lost-title": "Lost & Found",
+            "service-lost-desc": "Reunite families quickly through our matching system.",
+            "service-chatbot-title": "Relief Support Chatbot",
+            "service-chatbot-desc": "Get instant help, guidance, and connect to resources during natural disasters.",
+            "chatbot-btn": "Try Chatbot",
+            "service-ngo-directory-title": "🆘 NGO Directory - Sahaay",
+            "service-ngo-directory-desc": "Find and connect with NGOs across India by filtering location and services.",
+            "browse-ngos-btn": "Browse NGOs",
+            "service-flood-title": "🌊 Flood Risk Predictor",
+            "service-flood-desc": "Predict flood risk using local weather conditions to stay alert and prepare early.",
+            "try-flood-predictor-btn": "Try Flood Predictor",
+            "map-section-title": "Live Aid Map – Find Help Across India",
+            "community-blog-title": "📰 Community Blog",
+            "blog-assam-title": "How Local NGOs Saved Lives in Assam Floods",
+            "blog-assam-desc": "A ground report on how community collaboration and tech helped thousands during the 2025 floods.",
+            "blog-assam-btn": "Read More",
+            "blog-map-title": "Using Sahaay’s Map Feature for Relief",
+            "blog-map-desc": "Learn how volunteers tracked shelters and planned effective aid delivery using our platform’s tools.",
+            "blog-map-btn": "Read More",
+            "blog-stories-title": "Voices of Hope: Stories from Survivors",
+            "blog-stories-desc": "Real stories of resilience and unity shared by disaster-affected families helped through Sahaay.",
+            "blog-stories-btn": "Read More",
+            "modal1-title": "How Local NGOs Saved Lives in Assam Floods",
+            "modal1-content": "In July 2025, massive floods struck Assam, affecting thousands. Local NGOs stepped in when access to remote villages was blocked. With the help of Sahaay's real-time map, volunteers coordinated relief across affected districts, dropping supplies by boat and drone. Stories of rescue, like the one in Barpeta where volunteers carried elders across waist-high water, remind us of the importance of quick action and technology-driven support systems.",
+            "modal2-title": "Using Sahaay’s Map Feature for Relief",
+            "modal2-content": "Sahaay’s interactive Live Aid Map enabled disaster teams to view shelters, aid points, and flooded zones in real time. During the Bihar monsoon season, volunteers could pinpoint isolated communities and send tailored support, reducing redundancy and speeding up help delivery. This feature has become a critical tool for NGO coordination and rapid-response planning across India.",
+            "modal3-title": "Voices of Hope: Stories from Survivors",
+            "modal3-content": "“Thanks to Sahaay, my family got food and medicine within a day of the landslide,” says Reema, a mother of two in Himachal. Many such testimonials show how the platform connected isolated families to NGOs nearby. Real-time chatbot assistance helped people navigate help services, and the NGO directory allowed survivors to find help even without knowing local organizations. Sahaay became their digital friend in a time of need.",
+            "support-modal-title": "📞 Emergency Helpline Numbers & NGOs (India)",
+            "searchInput-placeholder": "Search by state or UT name", // Placeholder key
+            "national-emergency-label": "National Emergency Number:",
+            "national-emergency-number": "112",
+            "ndma-label": "NDMA (National Disaster Management Authority):",
+            "ndma-number": "1078",
+            "state-wise-helplines-title": "🌐 State-wise Helplines & Disaster NGOs",
+            "ap-state": "Andhra Pradesh:", "ap-helpline": "0866-2410978", "ap-ngo": "Red Cross AP",
+            "ar-state": "Arunachal Pradesh:", "ar-helpline": "1077", "ar-ngo": "Relief India Trust",
+            "as-state": "Assam:", "as-helpline": "1070", "as-ngo": "Rapid Response Assam",
+            "br-state": "Bihar:", "br-helpline": "0612-2217305", "br-ngo": "Save the Children India",
+            "ch-state": "Chhattisgarh:", "ch-helpline": "0771-2223471", "ch-ngo": "SEEDS Raipur",
+            "ga-state": "Goa:", "ga-helpline": "1077", "ga-ngo": "Konkan Relief Network",
+            "gj-state": "Gujarat:", "gj-helpline": "1077", "gj-ngo": "Relief Riders Gujarat",
+            "hr-state": "Haryana:", "hr-helpline": "1075", "hr-ngo": "HelpAge India Gurugram",
+            "hp-state": "Himachal Pradesh:", "hp-helpline": "1077", "hp-ngo": "CARE India Shimla",
+            "jh-state": "Jharkhand:", "jh-helpline": "0651-2400218", "jh-ngo": "Smile Foundation Ranchi",
+            "ka-state": "Karnataka:", "ka-helpline": "1077", "ka-ngo": "Goonj Bengaluru",
+            "kl-state": "Kerala:", "kl-helpline": "1077", "kl-ngo": "SEEDS India Kochi",
+            "mp-state": "Madhya Pradesh:", "mp-helpline": "0755-2555378", "mp-ngo": "ActionAid MP",
+            "mh-state": "Maharashtra:", "mh-helpline": "022-22027990", "mh-ngo": "Goonj Mumbai",
+            "mn-state": "Manipur:", "mn-helpline": "0385-2450141", "mn-ngo": "NERO Disaster Relief",
+            "ml-state": "Meghalaya:", "ml-helpline": "0364-2225289", "ml-ngo": "Rapid Response Shillong",
+            "mz-state": "Mizoram:", "mz-helpline": "0389-2336033", "mz-ngo": "Zoram Emergency Unit",
+            "nl-state": "Nagaland:", "nl-helpline": "0370-2291120", "nl-ngo": "Naga Relief Collective",
+            "od-state": "Odisha:", "od-helpline": "0674-2395398", "od-ngo": "Oxfam India Bhubaneswar",
+            "pb-state": "Punjab:", "pb-helpline": "1075", "pb-ngo": "Red Cross Punjab",
+            "rj-state": "Rajasthan:", "rj-helpline": "0141-2229111", "rj-ngo": "SankalpTaru Foundation",
+            "sk-state": "Sikkim:", "sk-helpline": "03592-202575", "sk-ngo": "Sikkim Relief Force",
+            "tn-state": "Tamil Nadu:", "tn-helpline": "1070", "tn-ngo": "Red Cross TN",
+            "ts-state": "Telangana:", "ts-helpline": "1077", "ts-ngo": "Relief India Hyderabad",
+            "tr-state": "Tripura:", "tr-helpline": "0381-2416045", "tr-ngo": "CARE India Tripura",
+            "up-state": "Uttar Pradesh:", "up-helpline": "0522-2236496", "up-ngo": "HelpAge India Lucknow",
+            "ut-state": "Uttarakhand:", "ut-helpline": "1070", "ut-ngo": "GiveIndia Relief Partners",
+            "wb-state": "West Bengal:", "wb-helpline": "033-22143526", "wb-ngo": "ActionAid Kolkata",
+            "ut-title": "🇮🇳 Union Territories",
+            "dl-state": "Delhi:", "dl-helpline": "1077", "dl-ngo": "Smile Foundation",
+            "jk-state": "Jammu & Kashmir:", "jk-helpline": "0191-2546223", "jk-ngo": "Kashmir Lifeline",
+            "ld-state": "Ladakh:", "ld-helpline": "01982-255567", "ld-ngo": "Ladakh Relief Foundation",
+            "py-state": "Puducherry:", "py-helpline": "0413-2231201", "py-ngo": "SEEDS Puducherry",
+            "an-state": "Andaman & Nicobar:", "an-helpline": "03192-232102", "an-ngo": "Island Relief Trust",
+            "chd-state": "Chandigarh:", "chd-helpline": "0172-2749194", "chd-ngo": "Punjab Red Cross Chandigarh",
+            "dnhdd-state": "Dadra and Nagar Haveli & Daman and Diu:", "dnhdd-helpline": "0260-2642106", "dnhdd-ngo": "Western Relief Collective",
+            "lk-state": "Lakshadweep:", "lk-helpline": "04896-262314", "lk-ngo": "Island Relief Coordination",
+            "support-modal-tip": "💡 You can also use our chatbot or NGO directory for real-time local support.",
+            "relax-recharge-title": "Relax & Recharge",
+            "music-title": "Peaceful Relief Music",
+            "music-desc": "Listen to calming sounds and ease your mind.",
+            "footer-text": "© 2025 Unity Reach. All rights reserved.",
+        },
+        hi: {
+            "site-title": "सहाय – भारतीय समुदायों को सशक्त बनाना",
+            "help-text": "सहायता चाहिए? हमारी सहायता टीम से कभी भी संपर्क करें।",
+            "contact-btn": "संपर्क सहायता",
+            "hero-title": "सहाय",
+            "hero-desc": "भारतीय समुदायों को सहायता, संसाधनों और आशा से जोड़कर सशक्त बनाना।",
+            "join-btn": "आंदोलन में शामिल हों",
+            "predict-btn": "आपूर्ति की कमी की भविष्यवाणी करें",
+            "core-services-title": "हमारी मुख्य सेवाएं",
+            "service-map-title": "लाइव सहायता मानचित्र",
+            "service-map-desc": "भारत भर में रीयल-टाइम सहायता केंद्रों और आश्रयों का पता लगाएं।",
+            "service-lost-title": "खोया और पाया",
+            "service-lost-desc": "हमारे मिलान प्रणाली के माध्यम से परिवारों को पुनः मिलाएं।",
+            "service-chatbot-title": "राहत सहायता चैटबॉट",
+            "service-chatbot-desc": "प्राकृतिक आपदाओं के दौरान तत्काल सहायता, मार्गदर्शन प्राप्त करें और संसाधनों से जुड़ें।",
+            "chatbot-btn": "चैटबॉट आज़माएँ",
+            "service-ngo-directory-title": "🆘 एनजीओ निर्देशिका - सहाय",
+            "service-ngo-directory-desc": "स्थान और सेवाओं को फ़िल्टर करके पूरे भारत में एनजीओ ढूंढें और उनसे जुड़ें।",
+            "browse-ngos-btn": "एनजीओ ब्राउज़ करें",
+            "service-flood-title": "🌊 बाढ़ जोखिम भविष्यवक्ता",
+            "service-flood-desc": "अलर्ट रहने और जल्दी तैयारी करने के लिए स्थानीय मौसम की स्थिति का उपयोग करके बाढ़ के जोखिम की भविष्यवाणी करें।",
+            "try-flood-predictor-btn": "बाढ़ भविष्यवक्ता आज़माएँ",
+            "map-section-title": "लाइव सहायता मानचित्र – भारत में सहायता खोजें",
+            "community-blog-title": "📰 सामुदायिक ब्लॉग",
+            "blog-assam-title": "असम बाढ़ में स्थानीय एनजीओ ने कैसे बचाई जान",
+            "blog-assam-desc": "2025 की बाढ़ के दौरान समुदायिक सहयोग और तकनीक ने हजारों की कैसे मदद की, इस पर एक जमीनी रिपोर्ट।",
+            "blog-assam-btn": "और पढ़ें",
+            "blog-map-title": "राहत के लिए सहाय के मानचित्र सुविधा का उपयोग",
+            "blog-map-desc": "जानें कि स्वयंसेवकों ने हमारे मंच के उपकरणों का उपयोग करके आश्रयों को कैसे ट्रैक किया और प्रभावी सहायता वितरण की योजना बनाई।",
+            "blog-map-btn": "और पढ़ें",
+            "blog-stories-title": "आशा की आवाज़ें: बचे हुए लोगों की कहानियाँ",
+            "blog-stories-desc": "आपदा प्रभावित परिवारों द्वारा साझा की गई लचीलेपन और एकता की वास्तविक कहानियाँ जिन्हें सहाय के माध्यम से मदद मिली।",
+            "blog-stories-btn": "और पढ़ें",
+            "modal1-title": "असम बाढ़ में स्थानीय एनजीओ ने कैसे बचाई जान",
+            "modal1-content": "जुलाई 2025 में, असम में बड़े पैमाने पर बाढ़ आई, जिससे हजारों लोग प्रभावित हुए। दूरदराज के गांवों तक पहुंच अवरुद्ध होने पर स्थानीय एनजीओ ने कदम रखा। सहाय के वास्तविक समय के मानचित्र की मदद से, स्वयंसेवकों ने प्रभावित जिलों में नाव और ड्रोन द्वारा आपूर्ति गिराकर राहत का समन्वय किया। बचाव की कहानियाँ, जैसे कि बारपेटा में जहाँ स्वयंसेवकों ने कमर तक पानी में बुजुर्गों को ले जाया, हमें त्वरित कार्रवाई और प्रौद्योगिकी-संचालित समर्थन प्रणालियों के महत्व की याद दिलाती हैं।",
+            "modal2-title": "राहत के लिए सहाय के मानचित्र सुविधा का उपयोग",
+            "modal2-content": "सहाय का इंटरैक्टिव लाइव सहायता मानचित्र आपदा टीमों को वास्तविक समय में आश्रयों, सहायता बिंदुओं और बाढ़ वाले क्षेत्रों को देखने में सक्षम बनाता है। बिहार मानसून के मौसम के दौरान, स्वयंसेवक अलग-थलग पड़े समुदायों का पता लगा सकते थे और लक्षित सहायता भेज सकते थे, जिससे अनावश्यकता कम हुई और सहायता वितरण में तेजी आई। यह सुविधा पूरे भारत में एनजीओ समन्वय और त्वरित प्रतिक्रिया योजना के लिए एक महत्वपूर्ण उपकरण बन गई है।",
+            "modal3-title": "आशा की आवाज़ें: बचे हुए लोगों की कहानियाँ",
+            "modal3-content": "“सहाय की बदौलत, मेरे परिवार को भूस्खलन के एक दिन के भीतर भोजन और दवा मिल गई,” हिमाचल में दो बच्चों की माँ रीमा कहती हैं। ऐसे कई प्रशंसापत्र दिखाते हैं कि कैसे मंच ने अलग-थलग पड़े परिवारों को पास के एनजीओ से जोड़ा। वास्तविक समय की चैटबॉट सहायता ने लोगों को सहायता सेवाओं को नेविगेट करने में मदद की, और एनजीओ निर्देशिका ने बचे हुए लोगों को स्थानीय संगठनों को जाने बिना भी मदद खोजने में मदद की। सहाय जरूरत के समय में उनका डिजिटल दोस्त बन गया।",
+            "support-modal-title": "📞 आपातकालीन हेल्पलाइन नंबर और एनजीओ (भारत)",
+            "searchInput-placeholder": "राज्य या केंद्र शासित प्रदेश के नाम से खोजें",
+            "national-emergency-label": "राष्ट्रीय आपातकालीन नंबर:",
+            "national-emergency-number": "112",
+            "ndma-label": "एनडीएमए (राष्ट्रीय आपदा प्रबंधन प्राधिकरण):",
+            "ndma-number": "1078",
+            "state-wise-helplines-title": "🌐 राज्य-वार हेल्पलाइन और आपदा एनजीओ",
+            "ap-state": "आंध्र प्रदेश:", "ap-helpline": "0866-2410978", "ap-ngo": "रेड क्रॉस एपी",
+            "ar-state": "अरुणाचल प्रदेश:", "ar-helpline": "1077", "ar-ngo": "रिलीफ इंडिया ट्रस्ट",
+            "as-state": "असम:", "as-helpline": "1070", "as-ngo": "रैपिड रिस्पांस असम",
+            "br-state": "बिहार:", "br-helpline": "0612-2217305", "br-ngo": "सेव द चिल्ड्रन इंडिया",
+            "ch-state": "छत्तीसगढ़:", "ch-helpline": "0771-2223471", "ch-ngo": "सीड्स रायपुर",
+            "ga-state": "गोवा:", "ga-helpline": "1077", "ga-ngo": "कोंकण रिलीफ नेटवर्क",
+            "gj-state": "गुजरात:", "gj-helpline": "1077", "gj-ngo": "रिलीफ राइडर्स गुजरात",
+            "hr-state": "हरियाणा:", "hr-helpline": "1075", "hr-ngo": "हेल्पएज इंडिया गुरुग्राम",
+            "hp-state": "हिमाचल प्रदेश:", "hp-helpline": "1077", "hp-ngo": "केयर इंडिया शिमला",
+            "jh-state": "झारखंड:", "jh-helpline": "0651-2400218", "jh-ngo": "स्माइल फाउंडेशन रांची",
+            "ka-state": "कर्नाटक:", "ka-helpline": "1077", "ka-ngo": "गूंज बेंगलुरु",
+            "kl-state": "केरल:", "kl-helpline": "1077", "kl-ngo": "सीड्स इंडिया कोच्चि",
+            "mp-state": "मध्य प्रदेश:", "mp-helpline": "0755-2555378", "mp-ngo": "एक्शनएड एमपी",
+            "mh-state": "महाराष्ट्र:", "mh-helpline": "022-22027990", "mh-ngo": "गूंज मुंबई",
+            "mn-state": "मणिपुर:", "mn-helpline": "0385-2450141", "mn-ngo": "एनईआरओ डिजास्टर रिलीफ",
+            "ml-state": "मेघालय:", "ml-helpline": "0364-2225289", "ml-ngo": "रैपिड रिस्पांस शिलांग",
+            "mz-state": "मिजोरम:", "mz-helpline": "0389-2336033", "mz-ngo": "ज़ोरम इमरजेंसी यूनिट",
+            "nl-state": "नागालैंड:", "nl-helpline": "0370-2291120", "nl-ngo": "नागा रिलीफ कलेक्टिव",
+            "od-state": "ओडिशा:", "od-helpline": "0674-2395398", "od-ngo": "ऑक्सफैम इंडिया भुवनेश्वर",
+            "pb-state": "पंजाब:", "pb-helpline": "1075", "pb-ngo": "रेड क्रॉस पंजाब",
+            "rj-state": "राजस्थान:", "rj-helpline": "0141-2229111", "rj-ngo": "संकल्पतरु फाउंडेशन",
+            "sk-state": "सिक्किम:", "sk-helpline": "03592-202575", "sk-ngo": "सिक्किम रिलीफ फोर्स",
+            "tn-state": "तमिलनाडु:", "tn-helpline": "1070", "tn-ngo": "रेड क्रॉस टीएन",
+            "ts-state": "तेलंगाना:", "ts-helpline": "1077", "ts-ngo": "रिलीफ इंडिया हैदराबाद",
+            "tr-state": "त्रिपुरा:", "tr-helpline": "0381-2416045", "tr-ngo": "केयर इंडिया त्रिपुरा",
+            "up-state": "उत्तर प्रदेश:", "up-helpline": "0522-2236496", "up-ngo": "हेल्पएज इंडिया लखनऊ",
+            "ut-state": "उत्तराखंड:", "ut-helpline": "1070", "ut-ngo": "गिवइंडिया रिलीफ पार्टनर्स",
+            "wb-state": "पश्चिम बंगाल:", "wb-helpline": "033-22143526", "wb-ngo": "एक्शनएड कोलकाता",
+            "ut-title": "🇮🇳 केंद्र शासित प्रदेश",
+            "dl-state": "दिल्ली:", "dl-helpline": "1077", "dl-ngo": "स्माइल फाउंडेशन",
+            "jk-state": "जम्मू और कश्मीर:", "jk-helpline": "0191-2546223", "jk-ngo": "कश्मीर लाइफलाइन",
+            "ld-state": "लद्दाख:", "ld-helpline": "01982-255567", "ld-ngo": "लद्दाख रिलीफ फाउंडेशन",
+            "py-state": "पुडुचेरी:", "py-helpline": "0413-2231201", "py-ngo": "सीड्स पुडुचेरी",
+            "an-state": "अंडमान और निकोबार:", "an-helpline": "03192-232102", "an-ngo": "आइलैंड रिलीफ ट्रस्ट",
+            "chd-state": "चंडीगढ़:", "chd-helpline": "0172-2749194", "chd-ngo": "पंजाब रेड क्रॉस चंडीगढ़",
+            "dnhdd-state": "दादरा और नगर हवेली और दमन और दीव:", "dnhdd-helpline": "0260-2642106", "dnhdd-ngo": "वेस्टर्न रिलीफ कलेक्टिव",
+            "lk-state": "लक्षद्वीप:", "lk-helpline": "04896-262314", "lk-ngo": "आइलैंड रिलीफ कोआर्डिनेशन",
+            "support-modal-tip": "💡 आप वास्तविक समय में स्थानीय सहायता के लिए हमारे चैटबॉट या एनजीओ निर्देशिका का भी उपयोग कर सकते हैं।",
+            "relax-recharge-title": "आराम करें और तरोताजा हों",
+            "music-title": "शांतिपूर्ण राहत संगीत",
+            "music-desc": "शांत ध्वनियाँ सुनें और अपने मन को शांत करें।"
+        },
+        ta: {
+            "site-title": "சஹாய் – இந்திய சமூகங்களை சக்திவாய்மையாக்கும்",
+            "help-text": "உதவி தேவைபடுகிறதா? எங்களின் ஆதரவு அணியை எப்போது வேண்டுமானாலும் தொடர்புகொள்ளவும்.",
+            "contact-btn": "ஆதரவை தொடர்பு கொள்ளவும்",
+            "hero-title": "சஹாய்",
+            "hero-desc": "இந்திய சமூகங்களுக்கு உதவி, வளங்கள் மற்றும் நம்பிக்கையை இணைத்து சக்திவாய்மையாக்குகிறோம்.",
+            "join-btn": "இயக்கத்தில் சேரவும்",
+            "predict-btn": "விநியோக பற்றாக்குறையை கணிக்கவும்",
+            "core-services-title": "எங்கள் முக்கிய சேவைகள்",
+            "service-map-title": "நேரடி உதவிக் வரைபடம்",
+            "service-map-desc": "இந்தியாவில் நேரடி உதவிக்கான இடங்களையும் முகாம்களையும் காண்க.",
+            "service-lost-title": "இழந்த மற்றும் கண்டுபிடிக்கப்பட்டது",
+            "service-lost-desc": "எங்கள் பொருத்து அமைப்பை பயன்படுத்தி குடும்பங்களை மீண்டும் ஒன்றிணைக்கவும்.",
+            "service-chatbot-title": "நிவாரண ஆதரவு சாட்பாட்",
+            "service-chatbot-desc": "இயற்கை சீற்றங்களின் போது உடனடி உதவி, வழிகாட்டுதல் மற்றும் ஆதாரங்களுடன் இணைப்பைப் பெறுங்கள்.",
+            "chatbot-btn": "சாட்பாட்டை முயற்சிக்கவும்",
+            "service-ngo-directory-title": "🆘 NGO அடைவு - சஹாய்",
+            "service-ngo-directory-desc": "இடம் மற்றும் சேவைகளை வடிகட்டுவதன் மூலம் இந்தியா முழுவதும் உள்ள NGO-க்களைக் கண்டறிந்து இணைக்கவும்.",
+            "browse-ngos-btn": "NGO-க்களை உலாவவும்",
+            "service-flood-title": "🌊 வெள்ள அபாய கணிப்பான்",
+            "service-flood-desc": "உள்ளூர் வானிலை நிலையைப் பயன்படுத்தி வெள்ள அபாயத்தை முன்கூட்டியே கணிக்கவும், விழிப்புடன் இருக்கவும், முன்னதாகவே தயாராகவும்.",
+            "try-flood-predictor-btn": "வெள்ள அபாய கணிப்பானை முயற்சிக்கவும்",
+            "map-section-title": "நேரடி உதவிக் வரைபடம் – இந்தியாவைச் சுற்றி உதவியைக் கண்டறியவும்",
+            "community-blog-title": "📰 சமூக வலைப்பதிவு",
+            "blog-assam-title": "அசாம் வெள்ளத்தில் உள்ளூர் NGO-க்கள் எவ்வாறு உயிர்களைக் காப்பாற்றின",
+            "blog-assam-desc": "2025 வெள்ளத்தின் போது சமூக ஒத்துழைப்பும் தொழில்நுட்பமும் ஆயிரக்கணக்கானோருக்கு எவ்வாறு உதவியது என்பது குறித்த ஒரு கள அறிக்கை.",
+            "blog-assam-btn": "மேலும் படிக்க",
+            "blog-map-title": "நிவாரணத்திற்காக சஹாயின் வரைபட அம்சத்தைப் பயன்படுத்துதல்",
+            "blog-map-desc": "எங்கள் தளத்தின் கருவிகளைப் பயன்படுத்தி தன்னார்வலர்கள் எவ்வாறு தங்குமிடங்களைக் கண்காணித்து பயனுள்ள உதவி விநியோகத்தை திட்டமிட்டனர் என்பதை அறிக.",
+            "blog-map-btn": "மேலும் படிக்க",
+            "blog-stories-title": "நம்பிக்கையின் குரல்கள்: தப்பிப்பிழைத்தவர்களின் கதைகள்",
+            "blog-stories-desc": "பேரழிவு நிவாரணம் முதல் குடும்ப ஒன்றிணைப்பு வரை சஹாய் மூலம் பாதிக்கப்பட்ட குடும்பங்களால் பகிரப்பட்ட பின்னடைவு மற்றும் ஒற்றுமையின் உண்மையான கதைகள்.",
+            "blog-stories-btn": "மேலும் படிக்க",
+            "modal1-title": "அசாம் வெள்ளத்தில் உள்ளூர் NGO-க்கள் எவ்வாறு உயிர்களைக் காப்பாற்றின",
+            "modal1-content": "ஜூலை 2025 இல், அசாமில் மிகப்பெரிய வெள்ளம் ஏற்பட்டது, ஆயிரக்கணக்கானோர் பாதிக்கப்பட்டனர். தொலைதூர கிராமங்களுக்கு அணுகல் தடைபட்டபோது உள்ளூர் NGO-க்கள் களமிறங்கின. சஹாயின் நிகழ்நேர வரைபடத்தின் உதவியுடன், தன்னார்வலர்கள் படகுகள் மற்றும் ட்ரோன்கள் மூலம் பொருட்களை அனுப்பி பாதிக்கப்பட்ட மாவட்டங்களில் நிவாரணத்தை ஒருங்கிணைத்தனர். பர்பேட்டாவில் தன்னார்வலர்கள் இடுப்பு வரை நீரில் முதியவர்களை சுமந்து சென்றது போன்ற மீட்பு கதைகள், விரைவான நடவடிக்கை மற்றும் தொழில்நுட்பத்தால் இயங்கும் ஆதரவு அமைப்புகளின் முக்கியத்துவத்தை நமக்கு நினைவூட்டுகின்றன.",
+            "modal2-title": "நிவாரணத்திற்காக சஹாயின் வரைபட அம்சத்தைப் பயன்படுத்துதல்",
+            "modal2-content": "சஹாயின் ஊடாடும் நேரடி உதவிக் வரைபடம் பேரிடர் குழுக்களை நிகழ்நேரத்தில் தங்குமிடங்கள், உதவி மையங்கள் மற்றும் வெள்ளப் பகுதிகளைப் பார்க்க உதவியது. பீகார் பருவமழையின் போது, தன்னார்வலர்கள் தனிமைப்படுத்தப்பட்ட சமூகங்களை துல்லியமாகக் கண்டறிந்து பொருத்தமான ஆதரவை அனுப்ப முடிந்தது, இது தேவையற்ற தன்மையைக் குறைத்து உதவி விநியோகத்தை விரைவுபடுத்தியது. இந்த அம்சம் இந்தியா முழுவதும் NGO ஒருங்கிணைப்பு மற்றும் விரைவான-பதில் திட்டமிடலுக்கு ஒரு முக்கியமான கருவியாக மாறிவிட்டது.",
+            "modal3-title": "நம்பிக்கையின் குரல்கள்: தப்பிப்பிழைத்தவர்களின் கதைகள்",
+            "modal3-content": "“சஹாய்க்கு நன்றி, நிலச்சரிவுக்கு ஒரு நாளுக்குள் என் குடும்பத்திற்கு உணவு மற்றும் மருந்து கிடைத்தது,” என்று இமாச்சலில் இரண்டு குழந்தைகளின் தாயான ரீமா கூறுகிறார். இதுபோன்ற பல சாட்சியங்கள், தளம் எவ்வாறு தனிமைப்படுத்தப்பட்ட குடும்பங்களை அருகிலுள்ள NGO-க்களுடன் இணைத்தது என்பதைக் காட்டுகிறது. நிகழ்நேர சாட்பாட் உதவி மக்களுக்கு உதவி சேவைகளை வழிநடத்த உதவியது, மேலும் NGO அடைவு உள்ளூர் அமைப்புகளை அறியாமலேயே தப்பிப்பிழைத்தவர்களுக்கு உதவியைக் கண்டறிய உதவியது. தேவைப்படும் நேரத்தில் சஹாய் அவர்களின் டிஜிட்டல் நண்பனாக மாறியது.",
+            "support-modal-title": "📞 அவசர உதவி எண்கள் & NGO-க்கள் (இந்தியா)",
+            "searchInput-placeholder": "மாநிலம் அல்லது யூடி பெயர் மூலம் தேடவும்",
+            "national-emergency-label": "தேசிய அவசர எண்:",
+            "national-emergency-number": "112",
+            "ndma-label": "என்.டி.எம்.ஏ (தேசிய பேரிடர் மேலாண்மை ஆணையம்):",
+            "ndma-number": "1078",
+            "state-wise-helplines-title": "🌐 மாநில வாரியான உதவி எண்கள் & பேரிடர் NGO-க்கள்",
+            "ap-state": "ஆந்திரப் பிரதேசம்:", "ap-helpline": "0866-2410978", "ap-ngo": "ரெட் கிராஸ் ஆந்திரப் பிரதேசம்",
+            "ar-state": "அருணாச்சலப் பிரதேசம்:", "ar-helpline": "1077", "ar-ngo": "ரிலீஃப் இந்தியா டிரஸ்ட்",
+            "as-state": "அசாம்:", "as-helpline": "1070", "as-ngo": "ரேபிட் ரெஸ்பான்ஸ் அசாம்",
+            "br-state": "பீகார்:", "br-helpline": "0612-2217305", "br-ngo": "சேவ் தி சில்ட்ரன் இந்தியா",
+            "ch-state": "சத்தீஸ்கர்:", "ch-helpline": "0771-2223471", "ch-ngo": "சீட்ஸ் ராய்ப்பூர்",
+            "ga-state": "கோவா:", "ga-helpline": "1077", "ga-ngo": "கொங்கன் ரிலீஃப் நெட்வொர்க்",
+            "gj-state": "குஜராத்:", "gj-helpline": "1077", "gj-ngo": "ரிலீஃப் ரைடர்ஸ் குஜராத்",
+            "hr-state": "ஹரியானா:", "hr-helpline": "1075", "hr-ngo": "ஹெல்ப்ஏஜ் இந்தியா குருகிராம்",
+            "hp-state": "இமாச்சலப் பிரதேசம்:", "hp-helpline": "1077", "hp-ngo": "கேர் இந்தியா சிம்லா",
+            "jh-state": "ஜார்கண்ட்:", "jh-helpline": "0651-2400218", "jh-ngo": "ஸ்மைல் பவுண்டேஷன் ராஞ்சி",
+            "ka-state": "கர்நாடகா:", "ka-helpline": "1077", "ka-ngo": "கூஞ்ச் பெங்களூரு",
+            "kl-state": "கேரளா:", "kl-helpline": "1077", "kl-ngo": "சீட்ஸ் இந்தியா கொச்சி",
+            "mp-state": "மத்தியப் பிரதேசம்:", "mp-helpline": "0755-2555378", "mp-ngo": "ஆக்ஷன்எய்ட் மத்தியப் பிரதேசம்",
+            "mh-state": "மகாராஷ்டிரா:", "mh-helpline": "022-22027990", "mh-ngo": "கூஞ்ச் மும்பை",
+            "mn-state": "மணிப்பூர்:", "mn-helpline": "0385-2450141", "mn-ngo": "என்.இ.ஆர்.ஓ. பேரிடர் நிவாரணம்",
+            "ml-state": "மேகாலயா:", "ml-helpline": "0364-2225289", "ml-ngo": "ரேபிட் ரெஸ்பான்ஸ் ஷில்லாங்",
+            "mz-state": "மிசோரம்:", "mz-helpline": "0389-2336033", "mz-ngo": "சோரம் அவசரப் பிரிவு",
+            "nl-state": "நாகாலாந்து:", "nl-helpline": "0370-2291120", "nl-ngo": "நாகா நிவாரணக் கூட்டமைப்பு",
+            "od-state": "ஒடிசா:", "od-helpline": "0674-2395398", "od-ngo": "ஆக்ஸ்ஃபாம் இந்தியா புவனேஷ்வர்",
+            "pb-state": "பஞ்சாப்:", "pb-helpline": "1075", "pb-ngo": "ரெட் கிராஸ் பஞ்சாப்",
+            "rj-state": "ராஜஸ்தான்:", "rj-helpline": "0141-2229111", "rj-ngo": "சங்கல்ப் தரு ஃபவுண்டேஷன்",
+            "sk-state": "சிக்கிம்:", "sk-helpline": "03592-202575", "sk-ngo": "சிக்கிம் நிவாரணப் படை",
+            "tn-state": "தமிழ்நாடு:", "tn-helpline": "1070", "tn-ngo": "ரெட் கிராஸ் தமிழ்நாடு",
+            "ts-state": "தெலுங்கானா:", "ts-helpline": "1077", "ts-ngo": "ரிலீஃப் இந்தியா ஹைதராபாத்",
+            "tr-state": "திரிபுரா:", "tr-helpline": "0381-2416045", "tr-ngo": "கேர் இந்தியா திரிபுரா",
+            "up-state": "உத்தரப் பிரதேசம்:", "up-helpline": "0522-2236496", "up-ngo": "ஹெல்ப்ஏஜ் இந்தியா லக்னோ",
+            "ut-state": "உத்தரகாண்ட்:", "ut-helpline": "1070", "ut-ngo": "கிவ்இந்தியா ரிலீஃப் பார்ட்னர்ஸ்",
+            "wb-state": "மேற்கு வங்காளம்:", "wb-helpline": "033-22143526", "wb-ngo": "ஆக்ஷன்எய்ட் கொல்கத்தா",
+            "ut-title": "🇮🇳 யூனியன் பிரதேசங்கள்",
+            "dl-state": "டெல்லி:", "dl-helpline": "1077", "dl-ngo": "ஸ்மைல் ஃபவுண்டேஷன்",
+            "jk-state": "ஜம்மு காஷ்மீர்:", "jk-helpline": "0191-2546223", "jk-ngo": "காஷ்மீர் லைஃப்லைன்",
+            "ld-state": "லடாக்:", "ld-helpline": "01982-255567", "ld-ngo": "லடாக் ரிலீஃப் ஃபவுண்டேஷன்",
+            "py-state": "புதுச்சேரி:", "py-helpline": "0413-2231201", "py-ngo": "சீட்ஸ் புதுச்சேரி",
+            "an-state": "அந்தமான் & நிக்கோபார்:", "an-helpline": "03192-232102", "an-ngo": "ஐலேண்ட் ரிலீஃப் டிரஸ்ட்",
+            "chd-state": "சண்டிகர்:", "chd-helpline": "0172-2749194", "chd-ngo": "பஞ்சாப் ரெட் கிராஸ் சண்டிகர்",
+            "dnhdd-state": "தாத்ரா மற்றும் நகர் ஹவேலி & டாமன் மற்றும் டையூ:", "dnhdd-helpline": "0260-2642106", "dnhdd-ngo": "வெஸ்டர்ன் ரிலீஃப் கலெக்டிவ்",
+            "lk-state": "லட்சத்தீவு:", "lk-helpline": "04896-262314", "lk-ngo": "ஐலேண்ட் ரிலீஃப் கோஆர்டினேஷன்",
+            "support-modal-tip": "💡 நீங்கள் எங்கள் சாட்பாட் அல்லது NGO அடைவைப் பயன்படுத்தி நிகழ்நேர உள்ளூர் ஆதரவைப் பெறலாம்.",
+            "relax-recharge-title": "ஓய்வெடுங்கள் மற்றும் புத்துணர்ச்சி அடையுங்கள்",
+            "music-title": "அமைதியான இசை",
+            "music-desc": "அமைதியான ஒலிகளை கேட்டு உங்கள் மனதை தளர்த்துங்கள்."
+        },
+        kn: {
+            "site-title": "ಸಹಾಯ್ – ಭಾರತೀಯ ಸಮುದಾಯಗಳಿಗೆ ಶಕ್ತಿ ನೀಡುವುದು",
+            "help-text": "ಸಹಾಯ ಬೇಕಾ? ನಮ್ಮ ಬೆಂಬಲ ತಂಡವನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಸಂಪರ್ಕಿಸಿ.",
+            "contact-btn": "ಬೆಂಬಲವನ್ನು ಸಂಪರ್ಕಿಸಿ",
+            "hero-title": "ಸಹಾಯ್",
+            "hero-desc": "ಭಾರತೀಯ ಸಮುದಾಯಗಳಿಗೆ ನೆರವು, ಸಂಪನ್ಮೂಲಗಳು ಮತ್ತು ಆಶೆಯನ್ನು ಸಂಪರ್ಕಿಸುವ ಮೂಲಕ ಶಕ್ತಿ ನೀಡುವುದು.",
+            "join-btn": "ಆಂದೋಲನದಲ್ಲಿ ಸೇರಿ",
+            "predict-btn": " ಸರಕಾಸು ಕೊರತೆಯನ್ನು ಊಹಿಸಿ",
+            "core-services-title": "ನಮ್ಮ ಪ್ರಮುಖ ಸೇವೆಗಳು",
+            "service-map-title": "ತಕ್ಷಣದ ನೆರವು ನಕ್ಷೆ",
+            "service-map-desc": "ಭಾರತದಾದ್ಯಂತ ನೈಜ ಕಾಲದ ನೆರವು ಕೇಂದ್ರಗಳು ಮತ್ತು ಆಶ್ರಯಗಳನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ.",
+            "service-lost-title": "ಕಾಣೆಯಾದ ಮತ್ತು ಸಿಕ್ಕಿರುವುದು",
+            "service-lost-desc": "ನಮ್ಮ ಹೊಂದಿಕೆ ವ್ಯವಸ್ಥೆಯ ಮೂಲಕ ಕುಟುಂಬಗಳನ್ನು ಮರುಜೋಡಿಸಿ.",
+            "service-chatbot-title": "ಪರಿಹಾರ ಬೆಂಬಲ ಚಾಟ್‌ಬಾಟ್",
+            "service-chatbot-desc": "ನೈಸರ್ಗಿಕ ವಿಕೋಪಗಳ ಸಮಯದಲ್ಲಿ ತಕ್ಷಣದ ಸಹಾಯ, ಮಾರ್ಗದರ್ಶನವನ್ನು ಪಡೆಯಿರಿ ಮತ್ತು ಸಂಪನ್ಮೂಲಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ.",
+            "chatbot-btn": "ಚಾಟ್‌ಬಾಟ್ ಪ್ರಯತ್ನಿಸಿ",
+            "service-ngo-directory-title": "🆘 ಎನ್‌ಜಿಒ ಡೈರೆಕ್ಟರಿ - ಸಹಾಯ್",
+            "service-ngo-directory-desc": "ಸ್ಥಳ ಮತ್ತು ಸೇವೆಗಳನ್ನು ಫಿಲ್ಟರ್ ಮಾಡುವ ಮೂಲಕ ಭಾರತದಾದ್ಯಂತ ಎನ್‌ಜಿಒಗಳನ್ನು ಹುಡುಕಿ ಮತ್ತು ಸಂಪರ್ಕಿಸಿ.",
+            "browse-ngos-btn": "ಎನ್‌ಜಿಒಗಳನ್ನು ಬ್ರೌಸ್ ಮಾಡಿ",
+            "service-flood-title": "🌊 ಪ್ರವಾಹ ಅಪಾಯ ಊಹೆಗಾರ",
+            "service-flood-desc": "ಅಲರ್ಟ್ ಆಗಿ ಇರಲು ಮತ್ತು ಮುಂಚಿತವಾಗಿ ತಯಾರಿ ಮಾಡಲು ಸ್ಥಳೀಯ ಹವಾಮಾನ ಪರಿಸ್ಥಿತಿಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಪ್ರವಾಹದ ಅಪಾಯವನ್ನು ಊಹಿಸಿ.",
+            "try-flood-predictor-btn": "ಪ್ರವಾಹ ಊಹೆಗಾರ ಪ್ರಯತ್ನಿಸಿ",
+            "map-section-title": "ತಕ್ಷಣದ ನೆರವು ನಕ್ಷೆ – ಭಾರತದಲ್ಲಿ ಸಹಾಯವನ್ನು ಹುಡುಕಿ",
+            "community-blog-title": "📰 ಸಮುದಾಯ ಬ್ಲಾಗ್",
+            "blog-assam-title": "ಅಸ್ಸಾಂ ಪ್ರವಾಹದಲ್ಲಿ ಸ್ಥಳೀಯ ಎನ್‌ಜಿಒಗಳು ಹೇಗೆ ಜೀವಗಳನ್ನು ಉಳಿಸಿದವು",
+            "blog-assam-desc": "2025ರ ಪ್ರವಾಹದ ಸಮಯದಲ್ಲಿ ಸಮುದಾಯದ ಸಹಯೋಗ ಮತ್ತು ತಂತ್ರಜ್ಞಾನ ಸಾವಿರಾರು ಜನರಿಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಿತು ಎಂಬುದರ ಕುರಿತು ಒಂದು ಕ್ಷೇತ್ರ ವರದಿ.",
+            "blog-assam-btn": "ಇನ್ನಷ್ಟು ಓದಿ",
+            "blog-map-title": "ಪರಿಹಾರಕ್ಕಾಗಿ ಸಹಾಯ್‌ನ ನಕ್ಷೆ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಬಳಸುವುದು",
+            "blog-map-desc": "ನಮ್ಮ ವೇದಿಕೆಯ ಪರಿಕರಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಸ್ವಯಂಸೇವಕರು ಹೇಗೆ ಆಶ್ರಯಗಳನ್ನು ಪತ್ತೆಹಚ್ಚಿದರು ಮತ್ತು ಪರಿಣಾಮಕಾರಿ ನೆರವು ವಿತರಣೆಯನ್ನು ಯೋಜಿಸಿದರು ಎಂಬುದನ್ನು ತಿಳಿಯಿರಿ.",
+            "blog-map-btn": "ಇನ್ನಷ್ಟು ಓದಿ",
+            "blog-stories-title": "ಆಶಯದ ಧ್ವನಿಗಳು: ಬದುಕುಳಿದವರ ಕಥೆಗಳು",
+            "blog-stories-desc": "ದುರಂತ ಪರಿಹಾರದಿಂದ ಕುಟುಂಬ ಪುನರ್ಮಿಲನದವರೆಗೆ ಸಹಾಯ್ ಮೂಲಕ ಸಹಾಯ ಪಡೆದ ವಿಪತ್ತು-ಪೀಡಿತ ಕುಟುಂಬಗಳು ಹಂಚಿಕೊಂಡ ಸ್ಥಿತಿಸ್ಥಾಪಕತ್ವ ಮತ್ತು ಏಕತೆಯ ನೈಜ ಕಥೆಗಳು.",
+            "blog-stories-btn": "ಇನ್ನಷ್ಟು ಓದಿ",
+            "modal1-title": "ಅಸ್ಸಾಂ ಪ್ರವಾಹದಲ್ಲಿ ಸ್ಥಳೀಯ ಎನ್‌ಜಿಒಗಳು ಹೇಗೆ ಜೀವಗಳನ್ನು ಉಳಿಸಿದವು",
+            "modal1-content": "ಜುಲೈ 2025 ರಲ್ಲಿ, ಅಸ್ಸಾಂನಲ್ಲಿ ದೊಡ್ಡ ಪ್ರಮಾಣದ ಪ್ರವಾಹ ಉಂಟಾಗಿ ಸಾವಿರಾರು ಜನರು ಬಾಧಿತರಾದರು. ದೂರದ ಹಳ್ಳಿಗಳಿಗೆ ಪ್ರವೇಶ ನಿರ್ಬಂಧಿಸಲ್ಪಟ್ಟಾಗ ಸ್ಥಳೀಯ ಎನ್‌ಜಿಒಗಳು ನೆರವಿಗೆ ಬಂದವು. ಸಹಾಯ್‌ನ ನೈಜ-ಸಮಯದ ನಕ್ಷೆಯ ಸಹಾಯದಿಂದ, ಸ್ವಯಂಸೇವಕರು ಬಾಧಿತ ಜಿಲ್ಲೆಗಳಲ್ಲಿ ದೋಣಿ ಮತ್ತು ಡ್ರೋನ್ ಮೂಲಕ ವಸ್ತುಗಳನ್ನು ತಲುಪಿಸುವ ಮೂಲಕ ಪರಿಹಾರ ಕಾರ್ಯಗಳನ್ನು ಸಂಘಟಿಸಿದರು. ಬಾರ್ಪೇಟಾದಲ್ಲಿ ಸ್ವಯಂಸೇವಕರು ಸೊಂಟದವರೆಗೆ ನೀರಿನಲ್ಲಿ ವೃದ್ಧರನ್ನು ಕರೆದೊಯ್ದ ಕಥೆಗಳು, ತ್ವರಿತ ಕ್ರಮ ಮತ್ತು ತಂತ್ರಜ್ಞಾನ-ಚಾಲಿತ ಬೆಂಬಲ ವ್ಯವಸ್ಥೆಗಳ ಮಹತ್ವವನ್ನು ನಮಗೆ ನೆನಪಿಸುತ್ತವೆ.",
+            "modal2-title": "ಪರಿಹಾರಕ್ಕಾಗಿ ಸಹಾಯ್‌ನ ನಕ್ಷೆ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಬಳಸುವುದು",
+            "modal2-content": "ಸಹಾಯ್‌ನ ಸಂವಾದಾತ್ಮಕ ಲೈವ್ ನೆರವು ನಕ್ಷೆಯು ವಿಕೋಪ ತಂಡಗಳಿಗೆ ಆಶ್ರಯಗಳು, ನೆರವು ಕೇಂದ್ರಗಳು ಮತ್ತು ಪ್ರವಾಹ ಪೀಡಿತ ಪ್ರದೇಶಗಳನ್ನು ನೈಜ ಸಮಯದಲ್ಲಿ ವೀಕ್ಷಿಸಲು ಅನುವು ಮಾಡಿಕೊಟ್ಟಿತು. ಬಿಹಾರದ ಮುಂಗಾರು ಕಾಲದಲ್ಲಿ, ಸ್ವಯಂಸೇವಕರು ಪ್ರತ್ಯೇಕವಾದ ಸಮುದಾಯಗಳನ್ನು ಗುರುತಿಸಲು ಮತ್ತು ಸೂಕ್ತ ಬೆಂಬಲವನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಯಿತು, ಇದು ಪುನರಾವರ್ತನೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಿತು ಮತ್ತು ಸಹಾಯ ವಿತರಣೆಯನ್ನು ವೇಗಗೊಳಿಸಿತು. ಈ ವೈಶಿಷ್ಟ್ಯವು ಭಾರತದಾದ್ಯಂತ ಎನ್‌ಜಿಒ ಸಮನ್ವಯ ಮತ್ತು ಕ್ಷಿಪ್ರ-ಪ್ರತಿಕ್ರಿಯೆ ಯೋಜನೆಯ ಪ್ರಮುಖ ಸಾಧನವಾಗಿದೆ.",
+            "modal3-title": "ಆಶಯದ ಧ್ವನಿಗಳು: ಬದುಕುಳಿದವರ ಕಥೆಗಳು",
+            "modal3-content": "“ಸಹಾಯ್‌ನಿಂದಾಗಿ, ನನ್ನ ಕುಟುಂಬಕ್ಕೆ ಭೂಕುಸಿತದ ಒಂದು ದಿನದೊಳಗೆ ಆಹಾರ ಮತ್ತು ಔಷಧ ಸಿಕ್ಕಿತು,” ಎಂದು ಹಿಮಾಚಲದಲ್ಲಿ ಇಬ್ಬರು ಮಕ್ಕಳ ತಾಯಿ ರೀಮಾ ಹೇಳುತ್ತಾರೆ. ಅಂತಹ ಅನೇಕ ಪ್ರಶಂಸಾ ಕಥೆಗಳು ವೇದಿಕೆಯು ಹೇಗೆ ಪ್ರತ್ಯೇಕವಾದ ಕುಟುಂಬಗಳನ್ನು ಹತ್ತಿರದ ಎನ್‌ಜಿಒಗಳೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿತು ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತವೆ. ನೈಜ-ಸಮಯದ ಚಾಟ್‌ಬಾಟ್ ಸಹಾಯವು ಜನರಿಗೆ ಸಹಾಯ ಸೇವೆಗಳನ್ನು ನ್ಯಾವಿಗೇಟ್ ಮಾಡಲು ಸಹಾಯ ಮಾಡಿತು, ಮತ್ತು ಎನ್‌ಜಿಒ ಡೈರೆಕ್ಟರಿಯು ಬದುಕುಳಿದವರಿಗೆ ಸ್ಥಳೀಯ ಸಂಸ್ಥೆಗಳನ್ನು ತಿಳಿದಿಲ್ಲದಿದ್ದರೂ ಸಹ ಸಹಾಯವನ್ನು ಹುಡುಕಲು ಅವಕಾಶ ಮಾಡಿಕೊಟ್ಟಿತು. ಅಗತ್ಯದ ಸಮಯದಲ್ಲಿ ಸಹಾಯ್ ಅವರ ಡಿಜಿಟಲ್ ಸ್ನೇಹಿತನಾದನು.",
+            "support-modal-title": "📞 ತುರ್ತು ಸಹಾಯವಾಣಿ ಸಂಖ್ಯೆಗಳು ಮತ್ತು ಎನ್‌ಜಿಒಗಳು (ಭಾರತ)",
+            "searchInput-placeholder": "ರಾಜ್ಯ ಅಥವಾ ಯುಟಿ ಹೆಸರಿನಿಂದ ಹುಡುಕಿ",
+            "national-emergency-label": "ರಾಷ್ಟ್ರೀಯ ತುರ್ತು ಸಂಖ್ಯೆ:",
+            "national-emergency-number": "112",
+            "ndma-label": "ಎನ್‌ಡಿಎಂಎ (ರಾಷ್ಟ್ರೀಯ ವಿಪತ್ತು ನಿರ್ವಹಣಾ ಪ್ರಾಧಿಕಾರ):",
+            "ndma-number": "1078",
+            "state-wise-helplines-title": "🌐 ರಾಜ್ಯವಾರು ಸಹಾಯವಾಣಿಗಳು ಮತ್ತು ವಿಪತ್ತು ಎನ್‌ಜಿಒಗಳು",
+            "ap-state": "ಆಂಧ್ರ ಪ್ರದೇಶ:", "ap-helpline": "0866-2410978", "ap-ngo": "ರೆಡ್ ಕ್ರಾಸ್ ಆಂಧ್ರ ಪ್ರದೇಶ",
+            "ar-state": "ಅರುಣಾಚಲ ಪ್ರದೇಶ:", "ar-helpline": "1077", "ar-ngo": "ರಿಲೀಫ್ ಇಂಡಿಯಾ ಟ್ರಸ್ಟ್",
+            "as-state": "ಅಸ್ಸಾಂ:", "as-helpline": "1070", "as-ngo": "ರ‍್ಯಾಪಿಡ್ ರೆಸ್ಪಾನ್ಸ್ ಅಸ್ಸಾಂ",
+            "br-state": "ಬಿಹಾರ:", "br-helpline": "0612-2217305", "br-ngo": "ಸೇವ್ ದಿ ಚಿಲ್ಡ್ರನ್ ಇಂಡಿಯಾ",
+            "ch-state": "ಛತ್ತೀಸ್‌ಗಢ:", "ch-helpline": "0771-2223471", "ch-ngo": "ಸೀಡ್ಸ್ ರಾಯ್‌ಪುರ",
+            "ga-state": "ಗೋವಾ:", "ga-helpline": "1077", "ga-ngo": "ಕೊಂಕಣ್ ರಿಲೀಫ್ ನೆಟ್‌ವರ್ಕ್",
+            "gj-state": "ಗುಜರಾತ್:", "gj-helpline": "1077", "gj-ngo": "ರಿಲೀಫ್ ರೈಡರ್ಸ್ ಗುಜರಾತ್",
+            "hr-state": "ಹರಿಯಾಣ:", "hr-helpline": "1075", "hr-ngo": "ಹೆಲ್ಪ್‌ಏಜ್ ಇಂಡಿಯಾ ಗುರುಗ್ರಾಮ್",
+            "hp-state": "ಹಿಮಾಚಲ ಪ್ರದೇಶ:", "hp-helpline": "1077", "hp-ngo": "ಕೇರ್ ಇಂಡಿಯಾ ಶಿಮ್ಲಾ",
+            "jh-state": "ಜಾರ್ಖಂಡ್:", "jh-helpline": "0651-2400218", "jh-ngo": "ಸ್ಮೈಲ್ ಫೌಂಡೇಶನ್ ರಾಂಚಿ",
+            "ka-state": "ಕರ್ನಾಟಕ:", "ka-helpline": "1077", "ka-ngo": "ಗೂಂಜ್ ಬೆಂಗಳೂರು",
+            "kl-state": "ಕೇರಳ:", "kl-helpline": "1077", "kl-ngo": "ಸೀಡ್ಸ್ ಇಂಡಿಯಾ ಕೊಚ್ಚಿ",
+            "mp-state": "ಮಧ್ಯ ಪ್ರದೇಶ:", "mp-helpline": "0755-2555378", "mp-ngo": "ಆಕ್ಷನ್‌ಏಡ್ ಎಂಪಿ",
+            "mh-state": "ಮಹಾರಾಷ್ಟ್ರ:", "mh-helpline": "022-22027990", "mh-ngo": "ಗೂಂಜ್ ಮುಂಬೈ",
+            "mn-state": "ಮಣಿಪುರ:", "mn-helpline": "0385-2450141", "mn-ngo": "ಎನ್‌ಇಆರ್‌ಒ ಡಿಸಾಸ್ಟರ್ ರಿಲೀಫ್",
+            "ml-state": "ಮೇಘಾಲಯ:", "ml-helpline": "0364-2225289", "ml-ngo": "ರ‍್ಯಾಪಿಡ್ ರೆಸ್ಪಾನ್ಸ್ ಶಿಲ್ಲಾಂಗ್",
+            "mz-state": "ಮಿಜೋರಾಂ:", "mz-helpline": "0389-2336033", "mz-ngo": "ಜೋರಂ ಎಮರ್ಜೆನ್ಸಿ ಯುನಿಟ್",
+            "nl-state": "ನಾಗಾಲ್ಯಾಂಡ್:", "nl-helpline": "0370-2291120", "nl-ngo": "ನಾಗಾ ರಿಲೀಫ್ ಕಲೆಕ್ಟಿವ್",
+            "od-state": "ಒಡಿಶಾ:", "od-helpline": "0674-2395398", "od-ngo": "ಆಕ್ಸ್‌ಫಾಮ್ ಇಂಡಿಯಾ ಭುವನೇಶ್ವರ್",
+            "pb-state": "ಪಂಜಾಬ್:", "pb-helpline": "1075", "pb-ngo": "ರೆಡ್ ಕ್ರಾಸ್ ಪಂಜಾಬ್",
+            "rj-state": "ರಾಜಸ್ಥಾನ:", "rj-helpline": "0141-2229111", "rj-ngo": "ಸಂಕಲ್ಪತರು ಫೌಂಡೇಶನ್",
+            "sk-state": "ಸಿಕ್ಕಿಂ:", "sk-helpline": "03592-202575", "sk-ngo": "ಸಿಕ್ಕಿಂ ರಿಲೀಫ್ ಫೋರ್ಸ್",
+            "tn-state": "ತಮಿಳುನಾಡು:", "tn-helpline": "1070", "tn-ngo": "ರೆಡ್ ಕ್ರಾಸ್ ಟಿಎನ್",
+            "ts-state": "ತೆಲಂಗಾಣ:", "ts-helpline": "1077", "ts-ngo": "ರಿಲೀಫ್ ಇಂಡಿಯಾ ಹೈದರಾಬಾದ್",
+            "tr-state": "ತ್ರಿಪುರ:", "tr-helpline": "0381-2416045", "tr-ngo": "ಕೇರ್ ಇಂಡಿಯಾ ತ್ರಿಪುರ",
+            "up-state": "ಉತ್ತರ ಪ್ರದೇಶ:", "up-helpline": "0522-2236496", "up-ngo": "ಹೆಲ್ಪ್‌ಏಜ್ ಇಂಡಿಯಾ ಲಕ್ನೋ",
+            "ut-state": "ಉತ್ತರಾಖಂಡ:", "ut-helpline": "1070", "ut-ngo": "ಗಿವ್‌ಇಂಡಿಯಾ ರಿಲೀಫ್ ಪಾರ್ಟ್ನರ್ಸ್",
+            "wb-state": "ಪಶ್ಚಿಮ ಬಂಗಾಳ:", "wb-helpline": "033-22143526", "wb-ngo": "ಆಕ್ಷನ್‌ಏಡ್ ಕೋಲ್ಕತ್ತಾ",
+            "ut-title": "🇮🇳 ಕೇಂದ್ರಾಡಳಿತ ಪ್ರದೇಶಗಳು",
+            "dl-state": "ದೆಹಲಿ:", "dl-helpline": "1077", "dl-ngo": "ಸ್ಮೈಲ್ ಫೌಂಡೇಶನ್",
+            "jk-state": "ಜಮ್ಮು ಮತ್ತು ಕಾಶ್ಮೀರ:", "jk-helpline": "0191-2546223", "jk-ngo": "ಕಾಶ್ಮೀರ ಲೈಫ್‌ಲೈನ್",
+            "ld-state": "ಲಡಾಖ್:", "ld-helpline": "01982-255567", "ld-ngo": "ಲಡಾಖ್ ರಿಲೀಫ್ ಫೌಂಡೇಶನ್",
+            "py-state": "ಪುದುಚೇರಿ:", "py-helpline": "0413-2231201", "py-ngo": "ಸೀಡ್ಸ್ ಪುದುಚೇರಿ",
+            "an-state": "ಅಂಡಮಾನ್ ಮತ್ತು ನಿಕೋಬಾರ್:", "an-helpline": "03192-232102", "an-ngo": "ಐಲ್ಯಾಂಡ್ ರಿಲೀಫ್ ಟ್ರಸ್ಟ್",
+            "chd-state": "ಚಂಡೀಗಢ:", "chd-helpline": "0172-2749194", "chd-ngo": "ಪಂಜಾಬ್ ರೆಡ್ ಕ್ರಾಸ್ ಚಂಡೀಗಢ",
+            "dnhdd-state": "ದಾದ್ರಾ ಮತ್ತು ನಗರ ಹವೇಲಿ & ದಮನ್ ಮತ್ತು ದಿಯು:", "dnhdd-helpline": "0260-2642106", "dnhdd-ngo": "ವೆಸ್ಟರ್ನ್ ರಿಲೀಫ್ ಕಲೆಕ್ಟಿವ್",
+            "lk-state": "ಲಕ್ಷದ್ವೀಪ:", "lk-helpline": "04896-262314", "lk-ngo": "ಐಲ್ಯಾಂಡ್ ರಿಲೀಫ್ ಕೋಆರ್ಡಿನೇಷನ್",
+            "support-modal-tip": "💡 ಸ್ಥಳೀಯ ಬೆಂಬಲಕ್ಕಾಗಿ ನೀವು ನಮ್ಮ ಚಾಟ್‌ಬಾಟ್ ಅಥವಾ ಎನ್‌ಜಿಒ ಡೈರೆಕ್ಟರಿಯನ್ನು ಸಹ ಬಳಸಬಹುದು.",
+            "relax-recharge-title": "ವಿಶ್ರಾಂತಿ ಮಾಡಿ ಮತ್ತು ಪುನಶ್ಚೇತನಗೊಳ್ಳಿ",
+            "music-title": "ಶಾಂತಿಗೊಳಿಸುವ ಸಂಗೀತ",
+            "music-desc": "ಶಾಂತಿಕರವಾದ ಧ್ವನಿಗಳನ್ನು ಕೇಳಿ ಮತ್ತು ನಿಮ್ಮ ಮನಸ್ಸನ್ನು ತಣಿಯಿರಿ."
+        },
+        gu: {
+            "site-title": "સહાય – ભારતીય સમુદાયોને સશક્ત બનાવવું",
+            "help-text": "મદદ જોઈએ છે? અમારી સપોર્ટ ટીમને કોઈપણ સમયે સંપર્ક કરો.",
+            "contact-btn": "સંપર્ક સપોર્ટ",
+            "hero-title": "સહાય",
+            "hero-desc": "મદદ, સંસાધનો અને આશાને જોડીને ભારતીય સમુદાયોને સશક્ત બનાવવું.",
+            "join-btn": "આંદોલનમાં જોડાઓ",
+            "predict-btn": "સપ્લાયની અછતની આગાહી કરો",
+            "core-services-title": "અમારી મુખ્ય સેવાઓ",
+            "service-map-title": "લાઈવ મદદ નકશો",
+            "service-map-desc": "ભારતભરના રિયલ ટાઈમ સહાય સ્થળો અને આશ્રય સ્થાન શોધો.",
+            "service-lost-title": "ગુમ થયેલ અને મળેલ",
+            "service-lost-desc": "અમારી મૅચિંગ સિસ્ટમ દ્વારા પરિવારને ફરીથી મળાવો.",
+            "service-chatbot-title": "રાહત સહાય ચેટબોટ",
+            "service-chatbot-desc": "કુદરતી આફતો દરમિયાન તાત્કાલિક મદદ, માર્ગદર્શન મેળવો અને સંસાધનો સાથે જોડાઓ.",
+            "chatbot-btn": "ચેટબોટ અજમાવો",
+            "service-ngo-directory-title": "🆘 એનજીઓ ડિરેક્ટરી - સહાય",
+            "service-ngo-directory-desc": "સ્થાન અને સેવાઓ ફિલ્ટર કરીને સમગ્ર ભારતમાં એનજીઓ શોધો અને કનેક્ટ કરો.",
+            "browse-ngos-btn": "એનજીઓ બ્રાઉઝ કરો",
+            "service-flood-title": "🌊 પૂર જોખમ અનુમાનક",
+            "service-flood-desc": "સજાગ રહેવા અને વહેલી તૈયારી કરવા માટે સ્થાનિક હવામાન પરિસ્થિતિઓનો ઉપયોગ કરીને પૂરના જોખમની આગાહી કરો.",
+            "try-flood-predictor-btn": "પૂર અનુમાનક અજમાવો",
+            "map-section-title": "લાઈવ મદદ નકશો – ભારતભરમાં સહાય શોધો",
+            "community-blog-title": "📰 સમુદાય બ્લોગ",
+            "blog-assam-title": "આસામના પૂર દરમિયાન સ્થાનિક એનજીઓએ કેવી રીતે જીવ બચાવ્યા",
+            "blog-assam-desc": "2025ના પૂર દરમિયાન સમુદાયના સહયોગ અને ટેક્નોલોજીએ હજારો લોકોને કેવી રીતે મદદ કરી તે અંગેનો એક ગ્રાઉન્ડ રિપોર્ટ.",
+            "blog-assam-btn": "વધુ વાંચો",
+            "blog-map-title": "રાહત માટે સહાયના નકશા સુવિધાનો ઉપયોગ",
+            "blog-map-desc": "શીખો કે કેવી રીતે સ્વયંસેવકોએ અમારા પ્લેટફોર્મના સાધનોનો ઉપયોગ કરીને આશ્રયસ્થાનોને ટ્રેક કર્યા અને અસરકારક સહાય પહોંચાડવાનું આયોજન કર્યું.",
+            "blog-map-btn": "વધુ વાંચો",
+            "blog-stories-title": "આશાની વાર્તાઓ: બચી ગયેલા લોકોની વાર્તાઓ",
+            "blog-stories-desc": "આપત્તિ રાહતથી લઈને પરિવારના પુનઃમિલન સુધી સહાય દ્વારા મદદ કરાયેલા આપત્તિગ્રસ્ત પરિવારો દ્વારા શેર કરાયેલી સ્થિતિસ્થાપકતા અને એકતાની વાસ્તવિક વાર્તાઓ.",
+            "blog-stories-btn": "વધુ વાંચો",
+            "modal1-title": "આસામના પૂર દરમિયાન સ્થાનિક એનજીઓએ કેવી રીતે જીવ બચાવ્યા",
+            "modal1-content": "જુલાઈ 2025માં, આસામમાં મોટા પાયે પૂર આવ્યું, જેનાથી હજારો લોકો પ્રભાવિત થયા. દૂરના ગામોમાં પહોંચ બંધ થઈ ત્યારે સ્થાનિક એનજીઓએ મદદ કરી. સહાયના રીઅલ-ટાઇમ નકશાની મદદથી, સ્વયંસેવકોએ બોટ અને ડ્રોન દ્વારા પુરવઠો છોડીને અસરગ્રસ્ત જિલ્લાઓમાં રાહતનું સંકલન કર્યું. બારપેટામાં જ્યાં સ્વયંસેવકોએ કમર સુધીના પાણીમાં વૃદ્ધોને લઈ ગયા તેવી બચાવની વાર્તાઓ, આપણને ઝડપી કાર્યવાહી અને ટેકનોલોજી-સંચાલિત સહાય પ્રણાલીઓના મહત્વની યાદ અપાવે છે.",
+            "modal2-title": "રાહત માટે સહાયના નકશા સુવિધાનો ઉપયોગ",
+            "modal2-content": "સહાયનું ઇન્ટરેક્ટિવ લાઇવ એઇડ મેપ આપત્તિ ટીમોને રીઅલ-ટાઇમમાં આશ્રયસ્થાનો, સહાયતા બિંદુઓ અને પૂરગ્રસ્ત વિસ્તારોને જોવામાં સક્ષમ બનાવ્યું. બિહારના ચોમાસા દરમિયાન, સ્વયંસેવકો અલગ-અલગ સમુદાયોને શોધી શકતા હતા અને અનુકૂળ સહાય મોકલી શકતા હતા, જેનાથી નિરર્થકતા ઓછી થતી હતી અને સહાય વિતરણ ઝડપી બનતું હતું. આ સુવિધા સમગ્ર ભારતમાં એનજીઓ સંકલન અને ઝડપી-પ્રતિસાદ આયોજન માટે એક મહત્વપૂર્ણ સાધન બની ગઈ છે.",
+            "modal3-title": "આશાની વાર્તાઓ: બચી ગયેલા લોકોની વાર્તાઓ",
+            "modal3-content": "“સહાયને કારણે, મારા પરિવારને ભૂસ્ખલન થયાના એક દિવસની અંદર ખોરાક અને દવા મળી,” હિમાચલની બે બાળકોની માતા રીમા કહે છે. આવા ઘણા પ્રમાણપત્રો દર્શાવે છે કે કેવી રીતે પ્લેટફોર્મે અલગ-અલગ પરિવારોને નજીકના એનજીઓ સાથે જોડ્યા. રીઅલ-ટાઇમ ચેટબોટ સહાયે લોકોને સહાય સેવાઓ નેવિગેટ કરવામાં મદદ કરી, અને એનજીઓ ડિરેક્ટરીએ બચી ગયેલા લોકોને સ્થાનિક સંસ્થાઓને જાણ્યા વિના પણ મદદ શોધવામાં મદદ કરી. સહાય જરૂરિયાતના સમયે તેમનો ડિજિટલ મિત્ર બન્યો.",
+            "support-modal-title": "📞 ઇમરજન્સી હેલ્પલાઇન નંબર્સ અને એનજીઓ (ભારત)",
+            "searchInput-placeholder": "રાજ્ય અથવા કેન્દ્રશાસિત પ્રદેશના નામ દ્વારા શોધો",
+            "national-emergency-label": "રાષ્ટ્રીય ઇમરજન્સી નંબર:",
+            "national-emergency-number": "112",
+            "ndma-label": "એનડીએમએ (રાષ્ટ્રીય આપત્તિ વ્યવસ્થાપન પ્રાધિકરણ):",
+            "ndma-number": "1078",
+            "state-wise-helplines-title": "🌐 રાજ્ય-વાર હેલ્પલાઇન અને આપત્તિ એનજીઓ",
+            "ap-state": "આંધ્ર પ્રદેશ:", "ap-helpline": "0866-2410978", "ap-ngo": "રેડ ક્રોસ આંધ્ર પ્રદેશ",
+            "ar-state": "અરુણાચલ પ્રદેશ:", "ar-helpline": "1077", "ar-ngo": "રિલીફ ઇન્ડિયા ટ્રસ્ટ",
+            "as-state": "આસામ:", "as-helpline": "1070", "as-ngo": "રેપિડ રિસ્પોન્સ આસામ",
+            "br-state": "બિહાર:", "br-helpline": "0612-2217305", "br-ngo": "સેવ ધ ચિલ્ડ્રન ઇન્ડિયા",
+            "ch-state": "છત્તીસગઢ:", "ch-helpline": "0771-2223471", "ch-ngo": "SEEDS રાયપુર",
+            "ga-state": "ગોવા:", "ga-helpline": "1077", "ga-ngo": "કોંકણ રિલીફ નેટવર્ક",
+            "gj-state": "ગુજરાત:", "gj-helpline": "1077", "gj-ngo": "રિલીફ રાઇડર્સ ગુજરાત",
+            "hr-state": "હરિયાણા:", "hr-helpline": "1075", "hr-ngo": "હેલ્પએજ ઇન્ડિયા ગુરુગ્રામ",
+            "hp-state": "હિમાચલ પ્રદેશ:", "hp-helpline": "1077", "hp-ngo": "કેર ઇન્ડિયા શિમલા",
+            "jh-state": "ઝારખંડ:", "jh-helpline": "0651-2400218", "jh-ngo": "સ્માઇલ ફાઉન્ડેશન રાંચી",
+            "ka-state": "કર્ણાટક:", "ka-helpline": "1077", "ka-ngo": "ગૂંજ બેંગલુરુ",
+            "kl-state": "કેરળ:", "kl-helpline": "1077", "kl-ngo": "SEEDS ઇન્ડિયા કોચી",
+            "mp-state": "મધ્ય પ્રદેશ:", "mp-helpline": "0755-2555378", "mp-ngo": "એક્શનએઇડ એમપી",
+            "mh-state": "મહારાષ્ટ્ર:", "mh-helpline": "022-22027990", "mh-ngo": "ગૂંજ મુંબઈ",
+            "mn-state": "મણિપુર:", "mn-helpline": "0385-2450141", "mn-ngo": "NERO ડિઝાસ્ટર રિલીફ",
+            "ml-state": "મેઘાલય:", "ml-helpline": "0364-2225289", "ml-ngo": "રેપિડ રિસ્પોન્સ શિલોંગ",
+            "mz-state": "મિઝોરમ:", "mz-helpline": "0389-2336033", "mz-ngo": "ઝોરામ ઇમરજન્સી યુનિટ",
+            "nl-state": "નાગાલેન્ડ:", "nl-helpline": "0370-2291120", "nl-ngo": "નાગા રિલીફ કલેક્ટિવ",
+            "od-state": "ઓડિશા:", "od-helpline": "0674-2395398", "od-ngo": "ઓક્સફામ ઇન્ડિયા ભુવનેશ્વર",
+            "pb-state": "પંજાબ:", "pb-helpline": "1075", "pb-ngo": "રેડ ક્રોસ પંજાબ",
+            "rj-state": "રાજસ્થાન:", "rj-helpline": "0141-2229111", "rj-ngo": "સંકલ્પતરુ ફાઉન્ડેશન",
+            "sk-state": "સિક્કિમ:", "sk-helpline": "03592-202575", "sk-ngo": "સિક્કિમ રિલીફ ફોર્સ",
+            "tn-state": "તમિલનાડુ:", "tn-helpline": "1070", "tn-ngo": "રેડ ક્રોસ ટી.એન.",
+            "ts-state": "તેલંગાણા:", "ts-helpline": "1077", "ts-ngo": "રિલીફ ઇન્ડિયા હૈદરાબાદ",
+            "tr-state": "ત્રિપુરા:", "tr-helpline": "0381-2416045", "tr-ngo": "કેર ઇન્ડિયા ત્રિપુરા",
+            "up-state": "ઉત્તર પ્રદેશ:", "up-helpline": "0522-2236496", "up-ngo": "હેલ્પએજ ઇન્ડિયા લખનૌ",
+            "ut-state": "ઉત્તરાખંડ:", "ut-helpline": "1070", "ut-ngo": "ગીવઇન્ડિયા રિલીફ પાર્ટનર્સ",
+            "wb-state": "પશ્ચિમ બંગાળ:", "wb-helpline": "033-22143526", "wb-ngo": "એક્શનએઇડ કોલકાતા",
+            "ut-title": "🇮🇳 કેન્દ્રશાસિત પ્રદેશો",
+            "dl-state": "દિલ્હી:", "dl-helpline": "1077", "dl-ngo": "સ્માઇલ ફાઉન્ડેશન",
+            "jk-state": "જમ્મુ અને કાશ્મીર:", "jk-helpline": "0191-2546223", "jk-ngo": "કાશ્મીર લાઇફલાઇન",
+            "ld-state": "લદાખ:", "ld-helpline": "01982-255567", "ld-ngo": "લદાખ રિલીફ ફાઉન્ડેશન",
+            "py-state": "પુડુચેરી:", "py-helpline": "0413-2231201", "py-ngo": "SEEDS પુડુચેરી",
+            "an-state": "અંદામાન અને નિકોબાર:", "an-helpline": "03192-232102", "an-ngo": "આઇલેન્ડ રિલીફ ટ્રસ્ટ",
+            "chd-state": "ચંદીગઢ:", "chd-helpline": "0172-2749194", "chd-ngo": "પંજાબ રેડ ક્રોસ ચંદીગઢ",
+            "dnhdd-state": "દાદરા અને નગર હવેલી અને દમણ અને દીવ:", "dnhdd-helpline": "0260-2642106", "dnhdd-ngo": "વેસ્ટર્ન રિલીફ કલેક્ટિવ",
+            "lk-state": "લક્ષદ્વીપ:", "lk-helpline": "04896-262314", "lk-ngo": "આઇલેન્ડ રિલીફ કોઓર્ડિનેશન",
+            "support-modal-tip": "💡 તમે રીઅલ-ટાઇમ સ્થાનિક સહાય માટે અમારા ચેટબોટ અથવા એનજીઓ ડિરેક્ટરીનો પણ ઉપયોગ કરી શકો છો.",
+            "relax-recharge-title": "આરામ કરો અને ફરી તાજા થાઓ",
+            "music-title": "શાંતિમય રાહત સંગીત",
+            "music-desc": "શાંત અવાજો સાંભળો અને તમારું મન શાંત કરો."
+        }
+    };
+
+    const languageSelector = document.getElementById("language-selector");
+
+    // Function to apply translations based on your original structure
+    function applyTranslations(lang) {
+        const translation = translations[lang];
+        if (!translation) return;
+
+        for (const key in translation) {
+            const el = document.getElementById(key);
+            if (el) {
+                if (key === "site-title") {
+                    updateSiteTitleAndContent(lang); // Call helper for title
+                } else if (key.endsWith("-placeholder")) {
+                    // Handle placeholder attributes for input fields
+                    const inputId = key.replace("-placeholder", ""); // e.g., "searchInput"
+                    const inputEl = document.getElementById(inputId);
+                    if (inputEl) {
+                        inputEl.placeholder = translation[key];
+                    }
+                }
+                else if (el.tagName === "INPUT" && el.type === "submit") {
+                    el.value = translation[key]; // For input type submit
+                }
+                else if (el.tagName === "BUTTON" || el.tagName === "A" && el.classList.contains('hero-btn')) {
+                    // Handle buttons and anchor tags with text content
+                    el.textContent = translation[key];
+                }
+                 else {
+                    el.textContent = translation[key];
+                }
+            }
+        }
+        localStorage.setItem("selectedLanguage", lang); // Save selected language
+    }
+
+    // Helper function to update the site title, integrating with theme logic
+    function updateSiteTitleAndContent(lang) {
+        const currentThemeIsDark = themeSwitch.checked;
+        const baseTitle = translations[lang]["site-title"];
+        siteTitle.textContent = currentThemeIsDark ? `${baseTitle} (Dark Mode)` : baseTitle;
+
+        // Reapply all other translations as well to ensure consistency
+        const translation = translations[lang];
+        for (const key in translation) {
+            if (key !== "site-title" && !key.endsWith("-placeholder")) { // Skip title and placeholders here
+                const el = document.getElementById(key);
+                if (el) {
+                    if (el.tagName === "INPUT" && el.type === "submit" || el.tagName === "BUTTON" || (el.tagName === "A" && el.classList.contains('hero-btn'))) {
+                         el.textContent = translation[key]; // For buttons and links
+                    } else {
+                         el.textContent = translation[key];
+                    }
+                }
+            }
+        }
+        updateModalPlaceholders(lang); // Ensure placeholders are updated too
+    }
+
+    // New function to handle only modal input placeholders
+    function updateModalPlaceholders(lang) {
+        const translation = translations[lang];
+        if (!translation) return;
+
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput && translation["searchInput-placeholder"]) {
+            searchInput.placeholder = translation["searchInput-placeholder"];
+        }
+        // Add more modal input placeholders here if you add more input fields
+    }
+
+    // Event listener for language selector (your original one)
+    languageSelector.addEventListener("change", (e) => {
+        applyTranslations(e.target.value);
+    });
+
+    // Event listener for theme switch: Ensure site title updates correctly with language
+    themeSwitch.addEventListener('change', () => {
+        updateSiteTitleAndContent(languageSelector.value);
+    });
+
+  </script>
 </body>
 </html>
-
 
 
 
