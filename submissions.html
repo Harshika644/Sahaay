@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sahaay Submissions</title>
+  <style>
+    :root {
+      --bg: #eef6ef;
+      --surface: #ffffff;
+      --surface-soft: #f7fbf7;
+      --text: #1f2a21;
+      --muted: #5e6d61;
+      --primary: #2e7d32;
+      --primary-dark: #1f5e24;
+      --border: rgba(46, 125, 50, 0.12);
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --danger: #c62828;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+      background: linear-gradient(180deg, #edf6ed, #f8fbf8);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #1f5e24, #2e7d32);
+      color: white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .topbar p {
+      margin: 4px 0 0;
+      color: rgba(255,255,255,0.84);
+      font-size: 0.92rem;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: white;
+      color: var(--primary-dark);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .btn.danger {
+      background: #fff2f2;
+      color: var(--danger);
+      border-color: rgba(198, 40, 40, 0.16);
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .summary-card {
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+
+    .summary-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-soft);
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+    }
+
+    .panel-body {
+      padding: 20px 22px 22px;
+    }
+
+    .empty {
+      padding: 20px;
+      border-radius: 14px;
+      background: #f8fbf8;
+      color: var(--muted);
+      border: 1px dashed rgba(46, 125, 50, 0.18);
+    }
+
+    .entry-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .entry {
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #fbfefb;
+    }
+
+    .entry-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .entry-title strong {
+      font-size: 1.02rem;
+      color: var(--primary-dark);
+    }
+
+    .entry-time {
+      color: var(--muted);
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+    }
+
+    .field {
+      min-width: 0;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .field-value {
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    @media (max-width: 900px) {
+      .summary,
+      .grid,
+      .entry-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Sahaay Form Submissions</h1>
+      <p>These records come from the local SQLite-backed Sahaay server running on this device.</p>
+    </div>
+    <div class="topbar-actions">
+      <a href="index.html" class="btn secondary">Back to Home</a>
+      <button class="btn danger" id="clear-all" type="button">Clear All Data</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="summary">
+      <div class="summary-card">
+        <span class="summary-label">Aid Requests</span>
+        <span class="summary-value" id="aid-count">0</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">Volunteer Signups</span>
+        <span class="summary-value" id="volunteer-count">0</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">Total Entries</span>
+        <span class="summary-value" id="total-count">0</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-header">
+          <h2>Aid Requests</h2>
+          <button class="btn danger" id="clear-aid" type="button">Clear Aid Requests</button>
+        </div>
+        <div class="panel-body">
+          <div id="aid-list"></div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <h2>Volunteer Signups</h2>
+          <button class="btn danger" id="clear-volunteers" type="button">Clear Volunteers</button>
+        </div>
+        <div class="panel-body">
+          <div id="volunteer-list"></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    let aidEntries = [];
+    let volunteerEntries = [];
+
+    function formatTime(value) {
+      if (!value) return 'Unknown time';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleString();
+    }
+
+    function renderList(targetId, entries, fields, emptyText) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      if (!entries.length) {
+        target.innerHTML = `<div class="empty">${emptyText}</div>`;
+        return;
+      }
+
+      target.innerHTML = `
+        <div class="entry-list">
+          ${entries.slice().reverse().map((entry, index) => `
+            <article class="entry">
+              <div class="entry-title">
+                <strong>${entry.name || 'Unnamed submission'} #${entries.length - index}</strong>
+                <span class="entry-time">${formatTime(entry.savedAt)}</span>
+              </div>
+              <div class="entry-grid">
+                ${fields.map(field => `
+                  <div class="field ${field.full ? 'full' : ''}">
+                    <span class="field-label">${field.label}</span>
+                    <div class="field-value">${entry[field.key] || '-'}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderPage() {
+      document.getElementById('aid-count').textContent = aidEntries.length;
+      document.getElementById('volunteer-count').textContent = volunteerEntries.length;
+      document.getElementById('total-count').textContent = aidEntries.length + volunteerEntries.length;
+
+      renderList(
+        'aid-list',
+        aidEntries,
+        [
+          { key: 'phone', label: 'Phone' },
+          { key: 'state', label: 'State' },
+          { key: 'need', label: 'Urgent Need' },
+          { key: 'location', label: 'Location', full: true },
+          { key: 'details', label: 'Situation Details', full: true }
+        ],
+        'No aid requests saved in the local database yet.'
+      );
+
+      renderList(
+        'volunteer-list',
+        volunteerEntries,
+        [
+          { key: 'phone', label: 'Phone' },
+          { key: 'city', label: 'City' },
+          { key: 'skill', label: 'Primary Skill' },
+          { key: 'availability', label: 'Availability', full: true },
+          { key: 'notes', label: 'Additional Notes', full: true }
+        ],
+        'No volunteer signups saved in the local database yet.'
+      );
+    }
+
+    async function loadSubmissions() {
+      try {
+        const response = await fetch('/api/submissions');
+        if (!response.ok) {
+          throw new Error('Failed to load submissions');
+        }
+
+        const data = await response.json();
+        aidEntries = data.aidRequests || [];
+        volunteerEntries = data.volunteerSignups || [];
+        renderPage();
+      } catch (error) {
+        document.getElementById('aid-list').innerHTML = '<div class="empty">Could not load data. Run "python app.py" and open http://127.0.0.1:8000/submissions.html</div>';
+        document.getElementById('volunteer-list').innerHTML = '<div class="empty">Could not load data. Run "python app.py" and open http://127.0.0.1:8000/submissions.html</div>';
+        document.getElementById('aid-count').textContent = '0';
+        document.getElementById('volunteer-count').textContent = '0';
+        document.getElementById('total-count').textContent = '0';
+      }
+    }
+
+    async function clearEntries(type) {
+      const query = type ? `?type=${type}` : '';
+      const response = await fetch(`/api/submissions${query}`, {
+        method: 'DELETE'
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to clear submissions');
+      }
+
+      await loadSubmissions();
+    }
+
+    document.getElementById('clear-aid').addEventListener('click', async function () {
+      try {
+        await clearEntries('aid');
+      } catch (error) {
+        alert('Could not clear aid requests. Run "python app.py" first.');
+      }
+    });
+
+    document.getElementById('clear-volunteers').addEventListener('click', async function () {
+      try {
+        await clearEntries('volunteer');
+      } catch (error) {
+        alert('Could not clear volunteer signups. Run "python app.py" first.');
+      }
+    });
+
+    document.getElementById('clear-all').addEventListener('click', async function () {
+      try {
+        await clearEntries('');
+      } catch (error) {
+        alert('Could not clear submissions. Run "python app.py" first.');
+      }
+    });
+
+    loadSubmissions();
+  </script>
+</body>
+</html>
