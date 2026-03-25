@@ -634,6 +634,12 @@
         .grid {
             gap: 20px;
         }
+        .impact-shell, .action-grid, .stats-grid, .form-grid {
+            grid-template-columns: 1fr;
+        }
+        .donation-wrap {
+            grid-template-columns: 1fr;
+        }
         /* UPDATED RESPONSIVE ADJUSTMENTS FOR CARDS */
         .card {
             width: 100%; /* Make cards full width on smaller screens */
@@ -702,6 +708,373 @@
         border-color: #66bb6a;
         color: black;
     }
+    .impact-strip {
+      padding: 36px 20px 20px;
+      background: linear-gradient(180deg, #f4fdf4, #eef8ef);
+    }
+
+    .impact-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 1.15fr) minmax(320px, 2fr);
+      gap: 24px;
+    }
+
+    .alert-panel, .stats-panel, .action-panel {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+      border: 1px solid rgba(46, 125, 50, 0.1);
+    }
+
+    .alert-panel {
+      padding: 24px;
+      text-align: left;
+      background: linear-gradient(145deg, #fffaf1, #fff);
+      border-left: 6px solid #f57c00;
+    }
+
+    .alert-panel h3, .stats-panel h3, .action-panel h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #1f5e24;
+      font-size: 1.35rem;
+    }
+
+    .alert-badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(245, 124, 0, 0.12);
+      color: #c25b00;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .alert-list {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .alert-list li {
+      margin-bottom: 10px;
+    }
+
+    .stats-panel {
+      padding: 24px;
+      text-align: left;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .stat-card {
+      padding: 18px 16px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #f4fbf4, #ffffff);
+      border: 1px solid rgba(46, 125, 50, 0.08);
+    }
+
+    .stat-number {
+      display: block;
+      margin-bottom: 8px;
+      color: #2e7d32;
+      font-size: 1.9rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: #5a665a;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .action-section {
+      padding: 70px 20px;
+      background: linear-gradient(180deg, #f7fcf7, #eef7ef);
+    }
+
+    .action-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .action-intro {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      text-align: center;
+      color: #587058;
+      line-height: 1.7;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .action-panel {
+      padding: 28px;
+      text-align: left;
+    }
+
+    .action-panel p {
+      color: #5a665a;
+      line-height: 1.6;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .action-panel label {
+      display: block;
+      margin-bottom: 6px;
+      color: #2e5131;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .action-panel input,
+    .action-panel select,
+    .action-panel textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(46, 125, 50, 0.16);
+      background: #fbfefb;
+      color: #333;
+      font: inherit;
+      box-sizing: border-box;
+    }
+
+    .action-panel textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .action-panel input:focus,
+    .action-panel select:focus,
+    .action-panel textarea:focus {
+      outline: none;
+      border-color: #66bb6a;
+      box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.15);
+    }
+
+    .form-note {
+      margin-top: 16px;
+      color: #6a746a;
+      font-size: 0.9rem;
+    }
+
+    .form-status {
+      min-height: 20px;
+      margin-top: 14px;
+      color: #1b5e20;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    body.dark .impact-strip,
+    body.dark .action-section {
+      background: linear-gradient(180deg, #1c1c1c, #181818);
+    }
+
+    body.dark .alert-panel,
+    body.dark .stats-panel,
+    body.dark .action-panel {
+      background: #252525;
+      border-color: rgba(255,255,255,0.06);
+      box-shadow: 0 8px 22px rgba(255,255,255,0.04);
+    }
+
+    body.dark .alert-panel {
+      background: linear-gradient(145deg, #2d2620, #252525);
+    }
+
+    body.dark .alert-panel h3, body.dark .stats-panel h3, body.dark .action-panel h3 {
+      color: #81c784;
+    }
+
+    body.dark .alert-badge {
+      background: rgba(255, 167, 38, 0.16);
+      color: #ffb74d;
+    }
+
+    body.dark .alert-list,
+    body.dark .action-panel p,
+    body.dark .action-intro,
+    body.dark .stat-label,
+    body.dark .form-note {
+      color: #c8c8c8;
+    }
+
+    body.dark .stat-card {
+      background: linear-gradient(145deg, #202b20, #2a2a2a);
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    body.dark .stat-number {
+      color: #81c784;
+    }
+
+    body.dark .action-panel label {
+      color: #d7ead8;
+    }
+
+    body.dark .action-panel input,
+    body.dark .action-panel select,
+    body.dark .action-panel textarea {
+      background: #1d1d1d;
+      color: #ececec;
+      border-color: #444;
+    }
+
+    body.dark .form-status {
+      color: #81c784;
+    }
+
+    .donation-section {
+      padding: 70px 20px;
+      background: linear-gradient(180deg, #fffdf7, #f8f3e8);
+    }
+
+    .donation-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, 1.2fr) minmax(260px, 0.9fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .donation-copy,
+    .donation-card {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid rgba(46, 125, 50, 0.1);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+    }
+
+    .donation-copy {
+      padding: 30px;
+      text-align: left;
+    }
+
+    .donation-copy h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      color: #1f5e24;
+      font-size: 2rem;
+    }
+
+    .donation-copy p {
+      color: #5a665a;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .donation-points {
+      margin: 18px 0 0;
+      padding-left: 18px;
+      color: #4f5f50;
+      line-height: 1.6;
+    }
+
+    .donation-points li {
+      margin-bottom: 10px;
+    }
+
+    .donation-card {
+      padding: 24px;
+      text-align: center;
+      background: linear-gradient(145deg, #ffffff, #f8fbf8);
+    }
+
+    .qr-frame {
+      width: min(280px, 100%);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 16px;
+      border-radius: 18px;
+      border: 1px dashed rgba(46, 125, 50, 0.24);
+      background: linear-gradient(145deg, #f7fbf7, #eef5ef);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .qr-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: white;
+    }
+
+    .qr-placeholder {
+      padding: 18px;
+      color: #6c786d;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .donation-card h3 {
+      margin: 0 0 8px;
+      color: #2e7d32;
+    }
+
+    .donation-card p {
+      margin: 0;
+      color: #5f6d60;
+      line-height: 1.6;
+    }
+
+    body.dark .donation-section {
+      background: linear-gradient(180deg, #1c1c1c, #181818);
+    }
+
+    body.dark .donation-copy,
+    body.dark .donation-card {
+      background: #252525;
+      border-color: rgba(255,255,255,0.06);
+      box-shadow: 0 8px 22px rgba(255,255,255,0.04);
+    }
+
+    body.dark .donation-copy h2,
+    body.dark .donation-card h3 {
+      color: #81c784;
+    }
+
+    body.dark .donation-copy p,
+    body.dark .donation-card p,
+    body.dark .donation-points,
+    body.dark .qr-placeholder {
+      color: #c8c8c8;
+    }
+
+    body.dark .qr-frame {
+      background: linear-gradient(145deg, #202220, #2a2a2a);
+      border-color: rgba(129, 199, 132, 0.2);
+    }
 </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
@@ -736,6 +1109,70 @@
     <p id="hero-desc">Empowering Indian communities by connecting aid, resources & hope to those who need it most.</p>
     <a href="https://www.instagram.com/sahaay109?igsh=MW1hZG8xdmozd2Qwcg==" class="hero-btn primary" id="join-btn">Join the Movement</a>
     <a href="https://ngosupplypredictor-e4fybd8dzf2xuurqswnytd.streamlit.app/" class="hero-btn outline" id="predict-btn">Predict Supply Shortages</a>
+  </section>
+
+  <section class="impact-strip">
+    <div class="impact-shell">
+      <div class="alert-panel">
+        <span class="alert-badge" id="emergency-alerts-badge">Emergency Alerts</span>
+        <h3 id="emergency-alerts-title">Priority response actions for communities</h3>
+        <p id="emergency-alerts-desc">Use these quick reminders to guide relief coordination before full field support arrives.</p>
+        <ul class="alert-list">
+          <li id="emergency-alert-item-1">Move families from low-lying flood zones to elevated shelter points.</li>
+          <li id="emergency-alert-item-2">Keep drinking water, ORS, and first-aid kits separated for fast access.</li>
+          <li id="emergency-alert-item-3">Report missing persons and elderly citizens to local help desks first.</li>
+        </ul>
+      </div>
+      <div class="stats-panel">
+        <h3 id="rapid-response-title">Rapid response snapshot</h3>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">28</span>
+            <span class="stat-label" id="rapid-response-stat-1">states and territories covered in helpline listings</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">10</span>
+            <span class="stat-label" id="rapid-response-stat-2">NGO points already mapped for quick reference</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">112</span>
+            <span class="stat-label" id="rapid-response-stat-3">national emergency number highlighted for fast access</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label" id="rapid-response-stat-4">community-first support mindset across the platform</span>
+          </div>
+        </div>
+        <div style="margin-top: 18px;">
+          <a href="submissions.html" class="hero-btn primary" id="view-form-submissions-btn">View Form Submissions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="donation-section" id="donate">
+    <div class="donation-wrap">
+      <div class="donation-copy">
+        <h2 id="donation-title">Support Relief Work</h2>
+        <p id="donation-desc-1">Add your payment QR code here so visitors can contribute directly to community support, emergency supplies, and volunteer-led relief efforts.</p>
+        <p id="donation-desc-2">To use your own QR, place an image named <strong>`qr-code.png`</strong> in this project folder, or change the image path below to your actual QR file name.</p>
+        <ul class="donation-points">
+          <li id="donation-point-1">Works best with UPI, PhonePe, Google Pay, or bank transfer QR images.</li>
+          <li id="donation-point-2">Keep the QR image square and high contrast for reliable scanning.</li>
+          <li id="donation-point-3">You can also add your donation phone number or account note below the QR card.</li>
+        </ul>
+      </div>
+      <div class="donation-card">
+        <div class="qr-frame">
+          <img src="qr-code.png" alt="Donation QR Code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <div class="qr-placeholder" id="qr-placeholder" style="display:none;">
+            Add your QR image as <strong>qr-code.png</strong> in this folder to show it here.
+          </div>
+        </div>
+        <h3 id="scan-donate-title">Scan To Donate</h3>
+        <p id="scan-donate-desc">Once you add your QR image, donors can scan this section directly from the page.</p>
+      </div>
+    </div>
   </section>
 
   <section class="features" id="get-started">
@@ -776,6 +1213,98 @@
   <section class="map-section">
     <h2 id="map-section-title">Ngos Across India – Find Help Across India</h2>
     <div class="map-wrap" id="map"></div>
+  </section>
+
+  <section class="action-section" id="community-actions">
+    <div class="action-wrap">
+      <h2 id="action-section-title" style="text-align: center; color: #2e7d32;">Take Action Quickly</h2>
+      <p class="action-intro" id="action-section-desc">These two forms make the page useful immediately. Affected families can log urgent needs, and volunteers can register availability for relief support. Demo submissions are stored only in this browser.</p>
+      <div class="action-grid">
+        <div class="action-panel">
+          <h3 id="aid-form-title">Request Aid</h3>
+          <p id="aid-form-desc">Share the urgent requirement, location, and contact details so local volunteers or NGOs can respond faster.</p>
+          <form id="aid-request-form">
+            <div class="form-grid">
+              <div>
+                <label for="aid-name" id="aid-name-label">Full Name</label>
+                <input id="aid-name" name="name" type="text" required />
+              </div>
+              <div>
+                <label for="aid-phone" id="aid-phone-label">Phone Number</label>
+                <input id="aid-phone" name="phone" type="tel" required />
+              </div>
+              <div>
+                <label for="aid-state" id="aid-state-label">State</label>
+                <input id="aid-state" name="state" type="text" required />
+              </div>
+              <div>
+                <label for="aid-need" id="aid-need-label">Urgent Need</label>
+                <select id="aid-need" name="need" required>
+                  <option value="" id="aid-need-option-select">Select</option>
+                  <option value="Food" id="aid-need-option-food">Food</option>
+                  <option value="Medical Support" id="aid-need-option-medical">Medical Support</option>
+                  <option value="Shelter" id="aid-need-option-shelter">Shelter</option>
+                  <option value="Rescue Transport" id="aid-need-option-transport">Rescue Transport</option>
+                  <option value="Missing Person Help" id="aid-need-option-missing">Missing Person Help</option>
+                </select>
+              </div>
+              <div class="full">
+                <label for="aid-location" id="aid-location-label">Exact Location or Landmark</label>
+                <input id="aid-location" name="location" type="text" required />
+              </div>
+              <div class="full">
+                <label for="aid-details" id="aid-details-label">Situation Details</label>
+                <textarea id="aid-details" name="details" placeholder="Describe the situation, number of people affected, and urgent requirements." required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="hero-btn primary" id="aid-submit-btn">Submit Aid Request</button>
+            <div class="form-status" id="aid-request-status"></div>
+          </form>
+        </div>
+        <div class="action-panel">
+          <h3 id="volunteer-form-title">Volunteer Signup</h3>
+          <p id="volunteer-form-desc">Capture who is available, where they are located, and what they can help with during a response window.</p>
+          <form id="volunteer-form">
+            <div class="form-grid">
+              <div>
+                <label for="volunteer-name" id="volunteer-name-label">Full Name</label>
+                <input id="volunteer-name" name="name" type="text" required />
+              </div>
+              <div>
+                <label for="volunteer-phone" id="volunteer-phone-label">Phone Number</label>
+                <input id="volunteer-phone" name="phone" type="tel" required />
+              </div>
+              <div>
+                <label for="volunteer-city" id="volunteer-city-label">City</label>
+                <input id="volunteer-city" name="city" type="text" required />
+              </div>
+              <div>
+                <label for="volunteer-skill" id="volunteer-skill-label">Primary Skill</label>
+                <select id="volunteer-skill" name="skill" required>
+                  <option value="" id="volunteer-skill-option-select">Select</option>
+                  <option value="Field Coordination" id="volunteer-skill-option-field">Field Coordination</option>
+                  <option value="Medical Aid" id="volunteer-skill-option-medical">Medical Aid</option>
+                  <option value="Logistics" id="volunteer-skill-option-logistics">Logistics</option>
+                  <option value="Counselling" id="volunteer-skill-option-counselling">Counselling</option>
+                  <option value="Translation" id="volunteer-skill-option-translation">Translation</option>
+                </select>
+              </div>
+              <div class="full">
+                <label for="volunteer-availability" id="volunteer-availability-label">Availability</label>
+                <input id="volunteer-availability" name="availability" type="text" placeholder="Example: Weekends, evenings, immediate deployment" required />
+              </div>
+              <div class="full">
+                <label for="volunteer-notes" id="volunteer-notes-label">Additional Notes</label>
+                <textarea id="volunteer-notes" name="notes" placeholder="Mention transport access, languages, equipment, or any other relevant details."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="hero-btn primary" id="volunteer-submit-btn">Register as Volunteer</button>
+            <div class="form-status" id="volunteer-status"></div>
+            <p class="form-note" id="volunteer-form-note">Submissions are saved to the local Sahaay backend when you run the project through the Python server.</p>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 
 <section class="section" id="blog">
@@ -968,7 +1497,61 @@
 
       // Call function to create circles when the page loads
       createCircles();
+      bindCommunityForms();
     });
+
+    function bindCommunityForms() {
+      bindFormSubmission('aid-request-form', 'aid', 'aid-request-status', 'aid-success');
+      bindFormSubmission('volunteer-form', 'volunteer', 'volunteer-status', 'volunteer-success');
+    }
+
+    function bindFormSubmission(formId, submissionType, statusId, successMessageKey) {
+      const form = document.getElementById(formId);
+      const status = document.getElementById(statusId);
+
+      if (!form || !status) return;
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const payload = {};
+
+        formData.forEach((value, key) => {
+          payload[key] = value;
+        });
+
+        const lang = document.getElementById('language-selector').value;
+        const extra = getExtraTranslations(lang);
+        status.textContent = extra['form-saving'];
+
+        try {
+          const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              type: submissionType,
+              data: payload
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to save submission');
+          }
+
+          form.reset();
+          status.textContent = extra[successMessageKey];
+        } catch (error) {
+          status.textContent = extra['form-error'];
+        }
+
+        setTimeout(() => {
+          status.textContent = '';
+        }, 4000);
+      });
+    }
 
     // Modal functionality
     function openModal(modalId) {
@@ -1004,6 +1587,360 @@
           li[i].style.display = 'none';
         }
       }
+    }
+
+    const extraTranslations = {
+      en: {
+        'emergency-alerts-badge': 'Emergency Alerts',
+        'emergency-alerts-title': 'Priority response actions for communities',
+        'emergency-alerts-desc': 'Use these quick reminders to guide relief coordination before full field support arrives.',
+        'emergency-alert-item-1': 'Move families from low-lying flood zones to elevated shelter points.',
+        'emergency-alert-item-2': 'Keep drinking water, ORS, and first-aid kits separated for fast access.',
+        'emergency-alert-item-3': 'Report missing persons and elderly citizens to local help desks first.',
+        'rapid-response-title': 'Rapid response snapshot',
+        'rapid-response-stat-1': 'states and territories covered in helpline listings',
+        'rapid-response-stat-2': 'NGO points already mapped for quick reference',
+        'rapid-response-stat-3': 'national emergency number highlighted for fast access',
+        'rapid-response-stat-4': 'community-first support mindset across the platform',
+        'view-form-submissions-btn': 'View Form Submissions',
+        'donation-title': 'Support Relief Work',
+        'donation-desc-1': 'Add your payment QR code here so visitors can contribute directly to community support, emergency supplies, and volunteer-led relief efforts.',
+        'donation-desc-2': 'To use your own QR, place an image named <strong>qr-code.png</strong> in this project folder, or change the image path below to your actual QR file name.',
+        'donation-point-1': 'Works best with UPI, PhonePe, Google Pay, or bank transfer QR images.',
+        'donation-point-2': 'Keep the QR image square and high contrast for reliable scanning.',
+        'donation-point-3': 'You can also add your donation phone number or account note below the QR card.',
+        'qr-placeholder': 'Add your QR image as <strong>qr-code.png</strong> in this folder to show it here.',
+        'scan-donate-title': 'Scan To Donate',
+        'scan-donate-desc': 'Once you add your QR image, donors can scan this section directly from the page.',
+        'action-section-title': 'Take Action Quickly',
+        'action-section-desc': 'These two forms make the page useful immediately. Affected families can log urgent needs, and volunteers can register availability for relief support.',
+        'aid-form-title': 'Request Aid',
+        'aid-form-desc': 'Share the urgent requirement, location, and contact details so local volunteers or NGOs can respond faster.',
+        'aid-name-label': 'Full Name',
+        'aid-phone-label': 'Phone Number',
+        'aid-state-label': 'State',
+        'aid-need-label': 'Urgent Need',
+        'aid-need-option-select': 'Select',
+        'aid-need-option-food': 'Food',
+        'aid-need-option-medical': 'Medical Support',
+        'aid-need-option-shelter': 'Shelter',
+        'aid-need-option-transport': 'Rescue Transport',
+        'aid-need-option-missing': 'Missing Person Help',
+        'aid-location-label': 'Exact Location or Landmark',
+        'aid-details-label': 'Situation Details',
+        'aid-submit-btn': 'Submit Aid Request',
+        'volunteer-form-title': 'Volunteer Signup',
+        'volunteer-form-desc': 'Capture who is available, where they are located, and what they can help with during a response window.',
+        'volunteer-name-label': 'Full Name',
+        'volunteer-phone-label': 'Phone Number',
+        'volunteer-city-label': 'City',
+        'volunteer-skill-label': 'Primary Skill',
+        'volunteer-skill-option-select': 'Select',
+        'volunteer-skill-option-field': 'Field Coordination',
+        'volunteer-skill-option-medical': 'Medical Aid',
+        'volunteer-skill-option-logistics': 'Logistics',
+        'volunteer-skill-option-counselling': 'Counselling',
+        'volunteer-skill-option-translation': 'Translation',
+        'volunteer-availability-label': 'Availability',
+        'volunteer-notes-label': 'Additional Notes',
+        'volunteer-submit-btn': 'Register as Volunteer',
+        'volunteer-form-note': 'Submissions are saved to the local Sahaay backend when you run the project through the Python server.',
+        'aid-details-placeholder': 'Describe the situation, number of people affected, and urgent requirements.',
+        'volunteer-availability-placeholder': 'Example: Weekends, evenings, immediate deployment',
+        'volunteer-notes-placeholder': 'Mention transport access, languages, equipment, or any other relevant details.',
+        'form-saving': 'Saving...',
+        'aid-success': 'Aid request saved to the local database.',
+        'volunteer-success': 'Volunteer registration saved to the local database.',
+        'form-error': 'Could not save submission. Run "python app.py" and open http://127.0.0.1:8000/index.html'
+      },
+      hi: {
+        'emergency-alerts-badge': 'आपात अलर्ट',
+        'emergency-alerts-title': 'समुदायों के लिए प्राथमिक प्रतिक्रिया कार्य',
+        'emergency-alerts-desc': 'पूर्ण फील्ड सहायता पहुंचने से पहले राहत समन्वय के लिए इन त्वरित सुझावों का उपयोग करें।',
+        'emergency-alert-item-1': 'निचले बाढ़-प्रभावित क्षेत्रों से परिवारों को ऊंचे आश्रय स्थलों तक पहुंचाएं।',
+        'emergency-alert-item-2': 'पीने का पानी, ओआरएस और प्राथमिक उपचार किट अलग रखें ताकि तुरंत उपयोग हो सके।',
+        'emergency-alert-item-3': 'लापता व्यक्तियों और बुजुर्ग नागरिकों की सूचना पहले स्थानीय सहायता डेस्क को दें।',
+        'rapid-response-title': 'त्वरित प्रतिक्रिया झलक',
+        'rapid-response-stat-1': 'हेल्पलाइन सूची में शामिल राज्य और केंद्र शासित प्रदेश',
+        'rapid-response-stat-2': 'त्वरित संदर्भ के लिए पहले से मैप किए गए NGO बिंदु',
+        'rapid-response-stat-3': 'तेज पहुंच के लिए प्रमुख राष्ट्रीय आपातकालीन नंबर',
+        'rapid-response-stat-4': 'पूरे प्लेटफ़ॉर्म में समुदाय-प्रथम सहायता दृष्टिकोण',
+        'view-form-submissions-btn': 'फॉर्म सबमिशन देखें',
+        'donation-title': 'राहत कार्य को सहयोग दें',
+        'donation-desc-1': 'यहां अपना भुगतान QR कोड जोड़ें ताकि लोग सीधे सामुदायिक सहायता, आपात सामग्री और राहत प्रयासों में योगदान कर सकें।',
+        'donation-desc-2': 'अपना QR उपयोग करने के लिए इस प्रोजेक्ट फ़ोल्डर में <strong>qr-code.png</strong> नाम की इमेज रखें, या नीचे दिया गया इमेज पथ बदलें।',
+        'donation-point-1': 'UPI, PhonePe, Google Pay या बैंक ट्रांसफर QR इमेज के साथ सबसे अच्छा काम करता है।',
+        'donation-point-2': 'विश्वसनीय स्कैनिंग के लिए QR इमेज चौकोर और उच्च कंट्रास्ट वाली रखें।',
+        'donation-point-3': 'आप QR कार्ड के नीचे अपना दान फोन नंबर या खाता नोट भी जोड़ सकते हैं।',
+        'qr-placeholder': 'इसे यहां दिखाने के लिए इस फ़ोल्डर में <strong>qr-code.png</strong> इमेज रखें।',
+        'scan-donate-title': 'स्कैन करके दान करें',
+        'scan-donate-desc': 'QR इमेज जोड़ने के बाद दानकर्ता इसी पेज से स्कैन कर सकते हैं।',
+        'action-section-title': 'जल्दी कार्रवाई करें',
+        'action-section-desc': 'ये दोनों फॉर्म पेज को तुरंत उपयोगी बनाते हैं। प्रभावित परिवार अपनी जरूरतें दर्ज कर सकते हैं और स्वयंसेवक उपलब्धता दर्ज कर सकते हैं।',
+        'aid-form-title': 'सहायता का अनुरोध',
+        'aid-form-desc': 'अपनी जरूरी आवश्यकता, स्थान और संपर्क विवरण साझा करें ताकि स्वयंसेवक या NGO जल्दी सहायता कर सकें।',
+        'aid-name-label': 'पूरा नाम',
+        'aid-phone-label': 'फ़ोन नंबर',
+        'aid-state-label': 'राज्य',
+        'aid-need-label': 'तत्काल आवश्यकता',
+        'aid-need-option-select': 'चुनें',
+        'aid-need-option-food': 'भोजन',
+        'aid-need-option-medical': 'चिकित्सा सहायता',
+        'aid-need-option-shelter': 'आश्रय',
+        'aid-need-option-transport': 'बचाव परिवहन',
+        'aid-need-option-missing': 'लापता व्यक्ति सहायता',
+        'aid-location-label': 'सटीक स्थान या लैंडमार्क',
+        'aid-details-label': 'स्थिति विवरण',
+        'aid-submit-btn': 'सहायता अनुरोध जमा करें',
+        'volunteer-form-title': 'स्वयंसेवक पंजीकरण',
+        'volunteer-form-desc': 'कौन उपलब्ध है, कहां है, और किस तरह मदद कर सकता है, यह दर्ज करें।',
+        'volunteer-name-label': 'पूरा नाम',
+        'volunteer-phone-label': 'फ़ोन नंबर',
+        'volunteer-city-label': 'शहर',
+        'volunteer-skill-label': 'मुख्य कौशल',
+        'volunteer-skill-option-select': 'चुनें',
+        'volunteer-skill-option-field': 'मैदानी समन्वय',
+        'volunteer-skill-option-medical': 'चिकित्सा सहायता',
+        'volunteer-skill-option-logistics': 'लॉजिस्टिक्स',
+        'volunteer-skill-option-counselling': 'परामर्श',
+        'volunteer-skill-option-translation': 'अनुवाद',
+        'volunteer-availability-label': 'उपलब्धता',
+        'volunteer-notes-label': 'अतिरिक्त नोट्स',
+        'volunteer-submit-btn': 'स्वयंसेवक के रूप में पंजीकरण करें',
+        'volunteer-form-note': 'जब आप प्रोजेक्ट को Python सर्वर से चलाते हैं, तब सबमिशन स्थानीय Sahaay बैकएंड में सेव होते हैं।',
+        'aid-details-placeholder': 'स्थिति, प्रभावित लोगों की संख्या और जरूरी आवश्यकताएं लिखें।',
+        'volunteer-availability-placeholder': 'उदाहरण: सप्ताहांत, शाम, तुरंत तैनाती',
+        'volunteer-notes-placeholder': 'यातायात, भाषाएं, उपकरण या अन्य जरूरी विवरण लिखें।',
+        'form-saving': 'सेव हो रहा है...',
+        'aid-success': 'सहायता अनुरोध स्थानीय डेटाबेस में सेव हो गया है।',
+        'volunteer-success': 'स्वयंसेवक पंजीकरण स्थानीय डेटाबेस में सेव हो गया है।',
+        'form-error': 'सबमिशन सेव नहीं हो सका। "python app.py" चलाएं और http://127.0.0.1:8000/index.html खोलें।'
+      },
+      ta: {
+        'emergency-alerts-badge': 'அவசர எச்சரிக்கைகள்',
+        'emergency-alerts-title': 'சமூகங்களுக்கான முக்கிய பதில் நடவடிக்கைகள்',
+        'emergency-alerts-desc': 'முழு கள உதவி வருவதற்கு முன் நிவாரண ஒருங்கிணைப்பை வழிநடத்த இந்த விரைவு குறிப்புகளை பயன்படுத்துங்கள்.',
+        'emergency-alert-item-1': 'தாழ்வான வெள்ளப் பகுதிகளில் இருந்து குடும்பங்களை உயர்ந்த தங்குமிடங்களுக்கு மாற்றுங்கள்.',
+        'emergency-alert-item-2': 'குடிநீர், ORS மற்றும் முதல் உதவி பெட்டிகளை உடனடி பயன்பாட்டிற்கு தனியாக வைத்திருங்கள்.',
+        'emergency-alert-item-3': 'காணாமல் போனவர்கள் மற்றும் முதியவர்களின் தகவலை முதலில் உள்ளூர் உதவி மையத்தில் தெரிவிக்கவும்.',
+        'rapid-response-title': 'விரைவு பதில் சுருக்கம்',
+        'rapid-response-stat-1': 'ஹெல்ப்லைன் பட்டியலில் உள்ள மாநிலங்கள் மற்றும் பிரதேசங்கள்',
+        'rapid-response-stat-2': 'விரைவு குறிப்புக்காக ஏற்கனவே வரைபடமிடப்பட்ட NGO இடங்கள்',
+        'rapid-response-stat-3': 'உடனடி அணுகலுக்காக முன்னிலைப்படுத்தப்பட்ட தேசிய அவசர எண்',
+        'rapid-response-stat-4': 'முழு தளத்திலும் சமூக முன்னுரிமை உதவி மனப்பாங்கு',
+        'view-form-submissions-btn': 'படிவ சமர்ப்பிப்புகளை காண்க',
+        'donation-title': 'நிவாரணப் பணிக்கு ஆதரவு அளிக்கவும்',
+        'donation-desc-1': 'இங்கே உங்கள் கட்டண QR குறியீட்டை சேர்த்து, சமூக உதவி மற்றும் நிவாரண முயற்சிகளுக்கு நேரடியாக பங்களிக்க விடுங்கள்.',
+        'donation-desc-2': 'உங்கள் QR-ஐ பயன்படுத்த இந்த project folder-ல் <strong>qr-code.png</strong> என்ற image-ஐ வையுங்கள் அல்லது கீழே உள்ள image path-ஐ மாற்றுங்கள்.',
+        'donation-point-1': 'UPI, PhonePe, Google Pay அல்லது bank transfer QR image-களுடன் சிறப்பாக செயல்படும்.',
+        'donation-point-2': 'நம்பகமான scan-க்கு QR image சதுரமாகவும் தெளிவான contrast-உடனும் இருக்க வேண்டும்.',
+        'donation-point-3': 'QR card-க்கு கீழே உங்கள் donation phone number அல்லது account note-ஐ சேர்க்கலாம்.',
+        'qr-placeholder': 'இங்கே காண்பிக்க இந்த folder-ல் <strong>qr-code.png</strong> image-ஐ வையுங்கள்.',
+        'scan-donate-title': 'ஸ்கேன் செய்து நன்கொடை அளிக்கவும்',
+        'scan-donate-desc': 'QR image சேர்த்த பிறகு donors இந்தப் பக்கத்திலிருந்தே scan செய்யலாம்.',
+        'action-section-title': 'உடனடி நடவடிக்கை எடுக்கவும்',
+        'action-section-desc': 'இந்த இரண்டு படிவங்கள் பக்கத்தை உடனே பயனுள்ளதாக மாற்றுகின்றன. பாதிக்கப்பட்ட குடும்பங்கள் தேவைகளை பதிவு செய்யலாம்; தன்னார்வலர்கள் தங்கள் கிடைப்பை பதிவு செய்யலாம்.',
+        'aid-form-title': 'உதவி கோரிக்கை',
+        'aid-form-desc': 'அவசரத் தேவை, இடம் மற்றும் தொடர்பு விவரங்களை பகிருங்கள்; உள்ளூர் தன்னார்வலர்கள் அல்லது NGO-கள் விரைவாக உதவ முடியும்.',
+        'aid-name-label': 'முழு பெயர்',
+        'aid-phone-label': 'தொலைபேசி எண்',
+        'aid-state-label': 'மாநிலம்',
+        'aid-need-label': 'அவசரத் தேவை',
+        'aid-need-option-select': 'தேர்வு செய்க',
+        'aid-need-option-food': 'உணவு',
+        'aid-need-option-medical': 'மருத்துவ உதவி',
+        'aid-need-option-shelter': 'தங்குமிடம்',
+        'aid-need-option-transport': 'மீட்பு போக்குவரத்து',
+        'aid-need-option-missing': 'காணாமல் போனவர் உதவி',
+        'aid-location-label': 'சரியான இடம் அல்லது அடையாளம்',
+        'aid-details-label': 'நிலை விவரம்',
+        'aid-submit-btn': 'உதவி கோரிக்கையை சமர்ப்பிக்கவும்',
+        'volunteer-form-title': 'தன்னார்வலர் பதிவு',
+        'volunteer-form-desc': 'யார் கிடைக்கிறார்கள், எங்கு உள்ளார்கள், என்ன உதவி செய்ய முடியும் என்பதை பதிவு செய்யுங்கள்.',
+        'volunteer-name-label': 'முழு பெயர்',
+        'volunteer-phone-label': 'தொலைபேசி எண்',
+        'volunteer-city-label': 'நகரம்',
+        'volunteer-skill-label': 'முக்கிய திறன்',
+        'volunteer-skill-option-select': 'தேர்வு செய்க',
+        'volunteer-skill-option-field': 'கள ஒருங்கிணைப்பு',
+        'volunteer-skill-option-medical': 'மருத்துவ உதவி',
+        'volunteer-skill-option-logistics': 'லாஜிஸ்டிக்ஸ்',
+        'volunteer-skill-option-counselling': 'ஆலோசனை',
+        'volunteer-skill-option-translation': 'மொழிபெயர்ப்பு',
+        'volunteer-availability-label': 'கிடைக்கும் நேரம்',
+        'volunteer-notes-label': 'கூடுதல் குறிப்புகள்',
+        'volunteer-submit-btn': 'தன்னார்வலராக பதிவு செய்யவும்',
+        'volunteer-form-note': 'Python server மூலம் project-ஐ இயக்கும் போது submissions local Sahaay backend-ல் save ஆகும்.',
+        'aid-details-placeholder': 'நிலைமை, பாதிக்கப்பட்டோர் எண்ணிக்கை மற்றும் அவசரத் தேவைகளை விவரிக்கவும்.',
+        'volunteer-availability-placeholder': 'உதாரணம்: வார இறுதிகள், மாலை நேரம், உடனடி பணி',
+        'volunteer-notes-placeholder': 'போக்குவரத்து, மொழிகள், உபகரணங்கள் அல்லது பிற தேவையான விவரங்களை எழுதவும்.',
+        'form-saving': 'சேமிக்கப்படுகிறது...',
+        'aid-success': 'உதவி கோரிக்கை local database-ல் save செய்யப்பட்டது.',
+        'volunteer-success': 'தன்னார்வலர் பதிவு local database-ல் save செய்யப்பட்டது.',
+        'form-error': 'சமர்ப்பிப்பை save செய்ய முடியவில்லை. "python app.py" இயக்கி http://127.0.0.1:8000/index.html திறக்கவும்.'
+      },
+      kn: {
+        'emergency-alerts-badge': 'ತುರ್ತು ಎಚ್ಚರಿಕೆಗಳು',
+        'emergency-alerts-title': 'ಸಮುದಾಯಗಳಿಗಾಗಿ ಪ್ರಮುಖ ಪ್ರತಿಕ್ರಿಯಾ ಕ್ರಮಗಳು',
+        'emergency-alerts-desc': 'ಪೂರ್ಣ ಕ್ಷೇತ್ರ ಸಹಾಯ ಬರುವ ಮೊದಲು ಪರಿಹಾರ ಸಮನ್ವಯಕ್ಕೆ ಈ ತ್ವರಿತ ಸೂಚನೆಗಳನ್ನು ಬಳಸಿ.',
+        'emergency-alert-item-1': 'ತಗ್ಗು ಪ್ರದೇಶದ ಪ್ರವಾಹ ವಲಯಗಳಿಂದ ಕುಟುಂಬಗಳನ್ನು ಎತ್ತರದ ಆಶ್ರಯ ಸ್ಥಳಗಳಿಗೆ ಕೊಂಡೊಯ್ಯಿರಿ.',
+        'emergency-alert-item-2': 'ಕುಡಿಯುವ ನೀರು, ORS ಮತ್ತು ಪ್ರಥಮ ಚಿಕಿತ್ಸೆ ಕಿಟ್‌ಗಳನ್ನು ಬೇರ್ಪಡಿಸಿ ಇಡಿ.',
+        'emergency-alert-item-3': 'ಕಾಣೆಯಾದವರು ಮತ್ತು ವೃದ್ಧರ ಬಗ್ಗೆ ಮೊದಲಿಗೆ ಸ್ಥಳೀಯ ಸಹಾಯ ಕೇಂದ್ರಕ್ಕೆ ತಿಳಿಸಿ.',
+        'rapid-response-title': 'ತ್ವರಿತ ಪ್ರತಿಕ್ರಿಯೆಯ ಚಿತ್ರಣ',
+        'rapid-response-stat-1': 'ಹೆಲ್ಪ್‌ಲೈನ್ ಪಟ್ಟಿಯಲ್ಲಿ ಒಳಗೊಂಡ ರಾಜ್ಯಗಳು ಮತ್ತು ಪ್ರದೇಶಗಳು',
+        'rapid-response-stat-2': 'ತ್ವರಿತ ಉಲ್ಲೇಖಕ್ಕಾಗಿ ಈಗಾಗಲೇ ನಕ್ಷೆಗೊಳಿಸಿರುವ NGO ಸ್ಥಳಗಳು',
+        'rapid-response-stat-3': 'ಶೀಘ್ರ ಪ್ರವೇಶಕ್ಕಾಗಿ ಪ್ರಮುಖವಾಗಿ ತೋರಿಸಿದ ರಾಷ್ಟ್ರೀಯ ತುರ್ತು ಸಂಖ್ಯೆ',
+        'rapid-response-stat-4': 'ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ತುಂಬ ಸಮುದಾಯ-ಪ್ರಥಮ ಸಹಾಯ ಮನೋಭಾವ',
+        'view-form-submissions-btn': 'ಫಾರ್ಮ್ ಸಲ್ಲಿಕೆಗಳನ್ನು ನೋಡಿ',
+        'donation-title': 'ರಿಲೀಫ್ ಕಾರ್ಯಕ್ಕೆ ಬೆಂಬಲ ನೀಡಿ',
+        'donation-desc-1': 'ಇಲ್ಲಿ ನಿಮ್ಮ ಪಾವತಿ QR code ಸೇರಿಸಿ, ಜನರು ನೇರವಾಗಿ ಸಮುದಾಯ ಸಹಾಯ ಮತ್ತು ಪರಿಹಾರ ಕಾರ್ಯಗಳಿಗೆ ಕೊಡುಗೆ ನೀಡಲು ಅವಕಾಶ ನೀಡಿ.',
+        'donation-desc-2': 'ನಿಮ್ಮ QR ಬಳಸಲು ಈ project folder ನಲ್ಲಿ <strong>qr-code.png</strong> image ಇರಿಸಿ ಅಥವಾ ಕೆಳಗಿನ image path ಬದಲಿಸಿ.',
+        'donation-point-1': 'UPI, PhonePe, Google Pay ಅಥವಾ bank transfer QR image‌ಗಳಿಗೆ ಅತ್ಯುತ್ತಮವಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ.',
+        'donation-point-2': 'ನಂಬಬಹುದಾದ scanಗಾಗಿ QR image ಚೌಕಾಕಾರವಾಗಿಯೂ ಸ್ಪಷ್ಟ contrast-ನಲ್ಲಿಯೂ ಇರಲಿ.',
+        'donation-point-3': 'QR card ಕೆಳಗೆ ನಿಮ್ಮ donation phone number ಅಥವಾ account note ಸೇರಿಸಬಹುದು.',
+        'qr-placeholder': 'ಇಲ್ಲಿ ತೋರಿಸಲು ಈ folder ನಲ್ಲಿ <strong>qr-code.png</strong> image ಇರಿಸಿ.',
+        'scan-donate-title': 'ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ದೇಣಿಗೆ ನೀಡಿ',
+        'scan-donate-desc': 'QR image ಸೇರಿಸಿದ ನಂತರ donors ಈ page ನಿಂದಲೇ scan ಮಾಡಬಹುದು.',
+        'action-section-title': 'ತಕ್ಷಣ ಕ್ರಮ ತೆಗೆದುಕೊಳ್ಳಿ',
+        'action-section-desc': 'ಈ ಎರಡು forms page-ಅನ್ನು ತಕ್ಷಣ ಉಪಯೋಗಕ್ಕೆ ತರುತ್ತವೆ. ಕುಟುಂಬಗಳು ತಮ್ಮ ಅಗತ್ಯವನ್ನು ದಾಖಲಿಸಬಹುದು; volunteers ಲಭ್ಯತೆಯನ್ನು ನೋಂದಾಯಿಸಬಹುದು.',
+        'aid-form-title': 'ಸಹಾಯ ವಿನಂತಿ',
+        'aid-form-desc': 'ತುರ್ತು ಅಗತ್ಯ, ಸ್ಥಳ ಮತ್ತು ಸಂಪರ್ಕ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ; volunteers ಅಥವಾ NGOಗಳು ಬೇಗ ಪ್ರತಿಕ್ರಿಯಿಸಬಹುದು.',
+        'aid-name-label': 'ಪೂರ್ಣ ಹೆಸರು',
+        'aid-phone-label': 'ಫೋನ್ ಸಂಖ್ಯೆ',
+        'aid-state-label': 'ರಾಜ್ಯ',
+        'aid-need-label': 'ತುರ್ತು ಅಗತ್ಯ',
+        'aid-need-option-select': 'ಆಯ್ಕೆ ಮಾಡಿ',
+        'aid-need-option-food': 'ಆಹಾರ',
+        'aid-need-option-medical': 'ವೈದ್ಯಕೀಯ ಸಹಾಯ',
+        'aid-need-option-shelter': 'ಆಶ್ರಯ',
+        'aid-need-option-transport': 'ರಕ್ಷಣೆ ಸಾರಿಗೆ',
+        'aid-need-option-missing': 'ಕಾಣೆಯಾದವರ ಸಹಾಯ',
+        'aid-location-label': 'ನಿಖರ ಸ್ಥಳ ಅಥವಾ ಗುರುತು',
+        'aid-details-label': 'ಪರಿಸ್ಥಿತಿ ವಿವರ',
+        'aid-submit-btn': 'ಸಹಾಯ ವಿನಂತಿಯನ್ನು ಸಲ್ಲಿಸಿ',
+        'volunteer-form-title': 'ಸ್ವಯಂಸೇವಕ ನೋಂದಣಿ',
+        'volunteer-form-desc': 'ಯಾರು ಲಭ್ಯರಾಗಿದ್ದಾರೆ, ಎಲ್ಲಿದ್ದಾರೆ ಮತ್ತು ಯಾವ ರೀತಿಯಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು ಎಂಬುದನ್ನು ಭರ್ತಿ ಮಾಡಿ.',
+        'volunteer-name-label': 'ಪೂರ್ಣ ಹೆಸರು',
+        'volunteer-phone-label': 'ಫೋನ್ ಸಂಖ್ಯೆ',
+        'volunteer-city-label': 'ನಗರ',
+        'volunteer-skill-label': 'ಮುಖ್ಯ ಕೌಶಲ್ಯ',
+        'volunteer-skill-option-select': 'ಆಯ್ಕೆ ಮಾಡಿ',
+        'volunteer-skill-option-field': 'ಕ್ಷೇತ್ರ ಸಮನ್ವಯ',
+        'volunteer-skill-option-medical': 'ವೈದ್ಯಕೀಯ ಸಹಾಯ',
+        'volunteer-skill-option-logistics': 'ಲಾಜಿಸ್ಟಿಕ್ಸ್',
+        'volunteer-skill-option-counselling': 'ಸಲಹೆ',
+        'volunteer-skill-option-translation': 'ಅನುವಾದ',
+        'volunteer-availability-label': 'ಲಭ್ಯತೆ',
+        'volunteer-notes-label': 'ಹೆಚ್ಚುವರಿ ಟಿಪ್ಪಣಿಗಳು',
+        'volunteer-submit-btn': 'ಸ್ವಯಂಸೇವಕರಾಗಿ ನೋಂದಣಿ ಮಾಡಿ',
+        'volunteer-form-note': 'Python server ಮೂಲಕ project run ಮಾಡಿದಾಗ submissions local Sahaay backend ನಲ್ಲಿ save ಆಗುತ್ತವೆ.',
+        'aid-details-placeholder': 'ಪರಿಸ್ಥಿತಿ, ബാധಿತ ಜನರ ಸಂಖ್ಯೆ ಮತ್ತು ತುರ್ತು ಅಗತ್ಯಗಳನ್ನು ವಿವರಿಸಿ.',
+        'volunteer-availability-placeholder': 'ಉದಾಹರಣೆ: ವಾರಾಂತ್ಯ, ಸಂಜೆ, ತಕ್ಷಣ ನಿಯೋಜನೆ',
+        'volunteer-notes-placeholder': 'ಸಾರಿಗೆ, ಭಾಷೆಗಳು, ಉಪಕರಣಗಳು ಅಥವಾ ಇತರ ವಿವರಗಳನ್ನು ಬರೆಯಿರಿ.',
+        'form-saving': 'ಸೇಫ್ ಮಾಡಲಾಗುತ್ತಿದೆ...',
+        'aid-success': 'ಸಹಾಯ ವಿನಂತಿ local database ನಲ್ಲಿ save ಆಗಿದೆ.',
+        'volunteer-success': 'ಸ್ವಯಂಸೇವಕ ನೋಂದಣಿ local database ನಲ್ಲಿ save ಆಗಿದೆ.',
+        'form-error': 'Submission save ಆಗಲಿಲ್ಲ. "python app.py" run ಮಾಡಿ ಮತ್ತು http://127.0.0.1:8000/index.html ತೆರೆಯಿರಿ.'
+      },
+      gu: {
+        'emergency-alerts-badge': 'આકસ્મિક ચેતવણીઓ',
+        'emergency-alerts-title': 'સમુદાયો માટે પ્રાથમિક પ્રતિસાદ પગલાં',
+        'emergency-alerts-desc': 'પૂર્ણ મેદાની મદદ પહોંચે તે પહેલાં રાહત સમન્વય માટે આ ઝડપી સૂચનોનો ઉપયોગ કરો.',
+        'emergency-alert-item-1': 'નીચાણવાળા પૂરગ્રસ્ત વિસ્તારોમાંથી પરિવારોને ઊંચા આશ્રય સ્થાનો પર ખસેડો.',
+        'emergency-alert-item-2': 'પીવાનું પાણી, ORS અને પ્રથમ સારવાર કિટ અલગ રાખો જેથી તાત્કાલિક ઉપયોગ થઈ શકે.',
+        'emergency-alert-item-3': 'ખોવાયેલા લોકો અને વૃદ્ધ નાગરિકોની માહિતી પહેલેથી સ્થાનિક મદદ ડેસ્કને આપો.',
+        'rapid-response-title': 'ઝડપી પ્રતિસાદ ઝલક',
+        'rapid-response-stat-1': 'હેલ્પલાઇન યાદીમાં આવરાયેલા રાજ્ય અને પ્રદેશો',
+        'rapid-response-stat-2': 'ઝડપી સંદર્ભ માટે પહેલેથી નકશામાં દાખલ NGO સ્થળો',
+        'rapid-response-stat-3': 'ઝડપી પહોંચ માટે હાઇલાઇટ કરાયેલ રાષ્ટ્રીય આપત્તિ નંબર',
+        'rapid-response-stat-4': 'આખા પ્લેટફોર્મમાં community-first support mindset',
+        'view-form-submissions-btn': 'ફોર્મ સબમિશન જુઓ',
+        'donation-title': 'રાહત કાર્યને સહયોગ આપો',
+        'donation-desc-1': 'અહીં તમારો payment QR code ઉમેરો જેથી લોકો સીધા સમુદાય સહાય અને રાહત પ્રયાસોમાં યોગદાન આપી શકે.',
+        'donation-desc-2': 'તમારો QR ઉપયોગ કરવા માટે આ project folder માં <strong>qr-code.png</strong> image મુકો અથવા નીચેનો image path બદલો.',
+        'donation-point-1': 'UPI, PhonePe, Google Pay અથવા bank transfer QR images સાથે સારું કામ કરે છે.',
+        'donation-point-2': 'વિશ્વસનીય scan માટે QR image ચોરસ અને high contrast રાખો.',
+        'donation-point-3': 'QR card નીચે donation phone number અથવા account note પણ ઉમેરી શકો છો.',
+        'qr-placeholder': 'અહીં બતાવવા માટે આ folder માં <strong>qr-code.png</strong> image મૂકો.',
+        'scan-donate-title': 'સ્કેન કરીને દાન કરો',
+        'scan-donate-desc': 'QR image ઉમેર્યા પછી donors આ page પરથી scan કરી શકે છે.',
+        'action-section-title': 'ઝડપી કાર્યવાહી કરો',
+        'action-section-desc': 'આ બે forms page ને તરત ઉપયોગી બનાવે છે. પરિવારો જરૂરિયાત નોંધાવી શકે છે અને volunteers availability register કરી શકે છે.',
+        'aid-form-title': 'મદદ માટે વિનંતી',
+        'aid-form-desc': 'તમારી તાત્કાલિક જરૂર, સ્થાન અને સંપર્ક વિગતો શેર કરો જેથી volunteers અથવા NGOs ઝડપથી મદદ કરી શકે.',
+        'aid-name-label': 'પૂરું નામ',
+        'aid-phone-label': 'ફોન નંબર',
+        'aid-state-label': 'રાજ્ય',
+        'aid-need-label': 'तात્કાલિક જરૂર',
+        'aid-need-option-select': 'પસંદ કરો',
+        'aid-need-option-food': 'ખોરાક',
+        'aid-need-option-medical': 'તબીબી મદદ',
+        'aid-need-option-shelter': 'આશ્રય',
+        'aid-need-option-transport': 'બચાવ પરિવહન',
+        'aid-need-option-missing': 'ખોવાયેલા વ્યક્તિ માટે મદદ',
+        'aid-location-label': 'ચોક્કસ સ્થાન અથવા landmark',
+        'aid-details-label': 'પરિસ્થિતિનું વર્ણન',
+        'aid-submit-btn': 'મદદ વિનંતી સબમિટ કરો',
+        'volunteer-form-title': 'સ્વયંસેવક નોંધણી',
+        'volunteer-form-desc': 'કોણ ઉપલબ્ધ છે, ક્યાં છે અને કેવી રીતે મદદ કરી શકે છે તે નોંધાવો.',
+        'volunteer-name-label': 'પૂરું નામ',
+        'volunteer-phone-label': 'ફોન નંબર',
+        'volunteer-city-label': 'શહેર',
+        'volunteer-skill-label': 'મુખ્ય કુશળતા',
+        'volunteer-skill-option-select': 'પસંદ કરો',
+        'volunteer-skill-option-field': 'ક્ષેત્ર સમન્વય',
+        'volunteer-skill-option-medical': 'તબીબી મદદ',
+        'volunteer-skill-option-logistics': 'લોજિસ્ટિક્સ',
+        'volunteer-skill-option-counselling': 'માર્ગદર્શન',
+        'volunteer-skill-option-translation': 'અનુવાદ',
+        'volunteer-availability-label': 'ઉપલબ્ધતા',
+        'volunteer-notes-label': 'વધારાની નોંધો',
+        'volunteer-submit-btn': 'સ્વયંસેવક તરીકે નોંધણી કરો',
+        'volunteer-form-note': 'Python server સાથે project ચલાવો ત્યારે submissions local Sahaay backend માં save થાય છે.',
+        'aid-details-placeholder': 'પરિસ્થિતિ, અસરગ્રસ્ત લોકોની સંખ્યા અને તાત્કાલિક જરૂરિયાતો લખો.',
+        'volunteer-availability-placeholder': 'ઉદાહરણ: weekends, evenings, immediate deployment',
+        'volunteer-notes-placeholder': 'પરિવહન, ભાષાઓ, સાધનો અથવા અન્ય જરૂરી વિગતો લખો.',
+        'form-saving': 'સેવ થઈ રહ્યું છે...',
+        'aid-success': 'મદદ વિનંતી local database માં save થઈ ગઈ છે.',
+        'volunteer-success': 'સ્વયંસેવક નોંધણી local database માં save થઈ ગઈ છે.',
+        'form-error': 'Submission save થઈ શક્યું નથી. "python app.py" ચલાવો અને http://127.0.0.1:8000/index.html ખોલો.'
+      }
+    };
+
+    function getExtraTranslations(lang) {
+      return extraTranslations[lang] || extraTranslations.en;
+    }
+
+    function applyExtraTranslations(lang) {
+      const extra = getExtraTranslations(lang);
+      const htmlKeys = new Set(['donation-desc-2', 'qr-placeholder']);
+      const placeholderTargets = {
+        'aid-details-placeholder': 'aid-details',
+        'volunteer-availability-placeholder': 'volunteer-availability',
+        'volunteer-notes-placeholder': 'volunteer-notes'
+      };
+
+      Object.keys(extra).forEach((key) => {
+        if (placeholderTargets[key] || key === 'form-saving' || key === 'aid-success' || key === 'volunteer-success' || key === 'form-error') {
+          return;
+        }
+
+        const element = document.getElementById(key);
+        if (!element) return;
+
+        if (htmlKeys.has(key)) {
+          element.innerHTML = extra[key];
+        } else {
+          element.textContent = extra[key];
+        }
+      });
+
+      Object.keys(placeholderTargets).forEach((key) => {
+        const element = document.getElementById(placeholderTargets[key]);
+        if (element) {
+          element.placeholder = extra[key];
+        }
+      });
     }
 
     // Language translation data
@@ -1479,6 +2416,7 @@
       document.getElementById('ld-ngo').textContent = translations[lang]['ld-ngo'];
       document.getElementById('py-ngo').textContent = translations[lang]['py-ngo'];
       document.getElementById('la-ngo').textContent = translations[lang]['la-ngo'];
+      applyExtraTranslations(lang);
     }
 
     // Event listener for language selector
